@@ -31,3 +31,6 @@ parser.add_argument('-sh', '--show', default=True, action="store_false", help='S
 parser.add_argument('-i', '--image_path', type=str, default='', help='Path to the image file.')
 args = parser.parse_args()
 
+personIdx = 0           # Used in YOLO for detection only persons.
+MIN_DISTANCE = 50       # Set the minimum distance initially between two persons.
+
