@@ -43,11 +43,13 @@ img_size = (img.shape[1],img.shape[0])
 # Do camera calibration given object points and image points
 ret, mtx, dist, rvecs, tvecs = cv2.calibrateCamera(object_points, image_points, img_size, None, None)
 
-undistort = cv2.undistort(img, mtx, dist, None, mtx)
-cv2.imshow("frame", img)
-cv2.imshow("undistort", undistort)
+# Save the camera calibration coefficients results for later use.
+dist_pickle = {}
+dist_pickle["mtx"] = mtx
+dist_pickle["dist"] = dist
+pickle.dump(dist_pickle, open("./cameraCalibration_coefficients.p", "wb"))
 
-cv2.waitKey(0)
-cv2.destroyAllWindows()
+
+
 
 
