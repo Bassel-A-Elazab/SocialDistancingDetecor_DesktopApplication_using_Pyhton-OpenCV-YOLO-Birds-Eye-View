@@ -182,4 +182,34 @@ def detected_minimum_distance_peoples(frame, boxes, confidences, centroids, conf
             cv2.circle(frame, (cX, cY), 5, color, 1)
 
 
+image = cv2.imread(args.image_path)
+# Load weights using OpenCV
+net = cv2.dnn.readNetFromDarknet(args.config, args.weights)
+
+if args.use_gpu:
+    print('Using GPU')
+    net.setPreferableBackend(cv2.dnn.DNN_BACKEND_CUDA)
+    net.setPreferableTarget(cv2.dnn.DNN_TARGET_CUDA)
+
+# Get the ouput layer names
+output_layer_names = net.getLayerNames()
+output_layer_names = [output_layer_names[i[0] - 1] for i in net.getUnconnectedOutLayers()]
+
+boxes, confidences, centroids = extract_detection_informations(image, net, output_layer_names, args.confidence)
+detected_minimum_distance_peoples(image, boxes, confidences, centroids, args.confidence, args.threshold)
+
+if args.save:
+    print('Creating output directory if it doesn\'t already exist')
+    os.makedirs('output', exist_ok=True)
+
+# show the output image
+if args.show:
+    cv2.imshow('YOLO Object Detection', image)
+    cv2.waitKey(0)
+        
+if args.save:
+    cv2.imwrite(f'output/{args.image_path.split("/")[-1]}', image)
+cv2.destroyAllWindows()
+
+
 
