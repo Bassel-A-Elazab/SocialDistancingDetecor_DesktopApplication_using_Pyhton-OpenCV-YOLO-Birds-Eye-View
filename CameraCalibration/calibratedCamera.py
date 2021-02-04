@@ -21,7 +21,19 @@ object_points = []      # 3d points in real world space.
 image_points = []       # 2d points in  image plane.
 
 images = glob.glob('train_images/calibration*.jpg')
-corners_not_found = []
 
+for idx, image in enumerate(images):
+    img = cv2.imread(image)
+    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)            # Convert to grayscale.
+    ret, corners = cv2.findChessboardCorners(gray, (nx, ny), None)      # Find the corner using opencv chessboard.
+    
+    # If found corners add object points and image points.
+    if ret == True:
+        object_points.append(object_point)
+        image_points.append(corners)
+
+        cv2.drawChessboardCorners(img, (nx, ny), corners, ret)
+        write_name = "output_test/corners_found"+str(idx)+".jpg"
+        cv2.imwrite(write_name, img)
 
 
