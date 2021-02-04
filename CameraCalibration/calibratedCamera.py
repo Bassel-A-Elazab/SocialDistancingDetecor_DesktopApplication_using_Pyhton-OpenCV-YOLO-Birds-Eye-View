@@ -36,4 +36,18 @@ for idx, image in enumerate(images):
         write_name = "output_test/corners_found"+str(idx)+".jpg"
         cv2.imwrite(write_name, img)
 
+#load image for reference to calculate all calibration coefficients for the undistortion process.
+img = cv2.imread('train_images/calibration1.jpg')
+img_size = (img.shape[1],img.shape[0])
+
+# Do camera calibration given object points and image points
+ret, mtx, dist, rvecs, tvecs = cv2.calibrateCamera(object_points, image_points, img_size, None, None)
+
+undistort = cv2.undistort(img, mtx, dist, None, mtx)
+cv2.imshow("frame", img)
+cv2.imshow("undistort", undistort)
+
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+
 
