@@ -4,6 +4,8 @@ from os import path
 import cv2
 import numpy as np
 
+from scipy.spatial import distance as dist
+
 from PyQt5 import QtCore
 from PyQt5 import QtWidgets
 from PyQt5 import QtGui
@@ -91,6 +93,51 @@ class SoicalDistanceDetectedWidget(QtWidgets.QWidget):
         return boxes, confidences, centroids     
 
 
+    def detected_minimum_distance_peoples(self, frame):
+        boxes, confidences, centroids = self.extract_detection_informations(frame)
+        results = []
         
+        # Apply non-maxima suppression to suppress weak, overlapping bounding boxes.
+        # Because YOLO doesn't apply it.
+        idxs = cv2.dnn.NMSBoxes(boxes, confidences, self.confidence, self.threshold)
+
+        # Check if there is at least one detection exists.
+        if len(idxs) > 0:
+            for i in idxs.flatten():
+                # Extract bounding box coordinates
+                x, y = boxes[i][0], boxes[i][1]
+                w, h = boxes[i][2], boxes[i][3]
+                
+                '''
+                Assign person detected informations which is:
+                    The person probability.
+                    The bounding box coordinates,
+                    The centroid.
+                '''
+                r = (confidences[i], (x, y, x + w, y + h), centroids[i])    
+                results.append(r)
+
+        violate = set()         # Holds the the set of indexes that violate the minimum social distance.
+
+        # Enter If there are at least two person detections to compute the distance maps.
+        if len(results) >= 2:
+            centroids = np.array([r[2] for r in results])               # Extract all centroids.
+            D = dist.cdist(centroids, centroids, metric="euclidean")    # Computing the Euclidean Distances between all pairs of the centroids.
+            
+            # loop over the upper triangular of the distance matrix.
+            for i in range(0, D.shape[0]):
+                for j in range(i+1, D.shape[1]):
+                    '''
+                    check to see if the distance between any two centroid pairs,
+                    is less than the configured number of pixels
+                    '''
+                    if D[i, j] < self.MIN_DISTANCE:
+                        # update out violation set with the indexes of the centroid pairs.
+                        violate.add(i)
+                        violate.add(j)
+
+        return results, violate
+    
+
 
 
