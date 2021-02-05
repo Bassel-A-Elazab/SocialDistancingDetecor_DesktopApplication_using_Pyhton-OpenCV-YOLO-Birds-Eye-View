@@ -172,6 +172,11 @@ class SoicalDistanceDetectedWidget(QtWidgets.QWidget):
         image = image.rgbSwapped()
         return image
     
+    # For drawing the frames on the PyQt-GUI Window
+    def paintEvent(self, event):
+        painter = QtGui.QPainter(self)
+        painter.drawImage(0, 0, self.frame)
+        self.frame = QtGui.QImage()
 
 
 
