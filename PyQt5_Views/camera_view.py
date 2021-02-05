@@ -21,7 +21,7 @@ class RecordVideo(QtCore.QObject):
 
     def start_recording(self):                  # for playing video
         self.timer.start(0, self)
-
+        
     def stop_recording(self):                   # for stopping video
         self.timer.stop()
     
