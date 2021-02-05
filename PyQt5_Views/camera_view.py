@@ -171,12 +171,27 @@ class SoicalDistanceDetectedWidget(QtWidgets.QWidget):
 
         image = image.rgbSwapped()
         return image
-    
+
     # For drawing the frames on the PyQt-GUI Window
     def paintEvent(self, event):
         painter = QtGui.QPainter(self)
         painter.drawImage(0, 0, self.frame)
         self.frame = QtGui.QImage()
+
+class MainWidget(QtWidgets.QWidget):
+    def __init__(self, YOLO_weights_path, YOLO_config_path, arg_confidence, arg_threshold, arg_MIN_DISTANCE, parent=None):
+        super().__init__(parent)
+        self.YOLO_Weights = YOLO_weights_path
+        self.YOLO_Config = YOLO_config_path
+        self.confidence = arg_confidence
+        self.threshold = arg_threshold
+        self.MIN_DISTANCE = arg_MIN_DISTANCE
+        
+        self.net = cv2.dnn.readNetFromDarknet(self.YOLO_Config, self.YOLO_Weights)
+        self.output_layer_names = self.net.getLayerNames()
+        self.output_layer_names = [self.output_layer_names[i[0] - 1] for i in self.net.getUnconnectedOutLayers()]
+    
+
 
 
 
