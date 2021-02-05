@@ -138,6 +138,27 @@ class SoicalDistanceDetectedWidget(QtWidgets.QWidget):
 
         return results, violate
     
+    # accept image data from QImage (PyQt5-GUI) from the final results of the detections,
+    # Then marked objects with suitable colors.
+    def Image_Data_Mark(self, image_data):
+        results, violates = self.detected_minimum_distance_peoples(image_data)
+        for (i, (prob, bbox, centroid)) in enumerate(results):
+            
+            (startX, startY, endX, endY) = bbox      # extract the bounding box.
+            (cX, cY) = centroid                     # extract the centroid coordinates.
+            color = (0, 255, 0)
 
+            # Change the color to red if the index pair exists within the violation set.
+            if i in violates:
+                color = (0, 0, 255)
+                
+            cv2.rectangle(image_data, (startX, startY), (endX, endY), color, 2)
+            cv2.circle(image_data, (cX, cY), 5, color, 1)
 
+        self.frame = self.get_qimage(image_data)
+        if self.frame.size() != self.size():
+            self.setFixedSize(self.frame.size())
 
+        self.update()
+
+    
