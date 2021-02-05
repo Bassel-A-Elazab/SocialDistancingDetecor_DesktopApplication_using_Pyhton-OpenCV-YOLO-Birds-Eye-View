@@ -18,8 +18,10 @@ class RecordVideo(QtCore.QObject):
         super().__init__(parent)
         self.camera = cv2.VideoCapture(camera_path_port)
         self.timer = QtCore.QBasicTimer()
+
     def start_recording(self):
         self.timer.start(0, self)
+
     def timerEvent(self, event):
         if(event.timerId() != self.timer.timerId()):
             return
@@ -178,7 +180,8 @@ class SoicalDistanceDetectedWidget(QtWidgets.QWidget):
         self.frame = QtGui.QImage()
 
 class MainWidget(QtWidgets.QWidget):
-    def __init__(self, YOLO_weights_path, YOLO_config_path, arg_confidence, arg_threshold, arg_MIN_DISTANCE, parent=None):
+    
+    def __init__(self, YOLO_config_path, YOLO_weights_path, arg_confidence, arg_threshold, arg_MIN_DISTANCE, parent=None):
         super().__init__(parent)
         self.YOLO_Weights = YOLO_weights_path
         self.YOLO_Config = YOLO_config_path
