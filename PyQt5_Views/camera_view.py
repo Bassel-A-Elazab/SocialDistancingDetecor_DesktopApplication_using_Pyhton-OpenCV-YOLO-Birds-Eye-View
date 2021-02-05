@@ -160,5 +160,18 @@ class SoicalDistanceDetectedWidget(QtWidgets.QWidget):
             self.setFixedSize(self.frame.size())
 
         self.update()
-
     
+    # Passing the frames from the videos opencv as ndarray and converts to QImage to work within PyQt5-GUI
+    def get_qimage(self, image: np.ndarray):
+        height, width, colors = image.shape
+        bytesPerLine = 3 * width
+        QImage = QtGui.QImage
+
+        image = QImage(image.data, width, height, bytesPerLine, QImage.Format_RGB888)
+
+        image = image.rgbSwapped()
+        return image
+    
+
+
+
