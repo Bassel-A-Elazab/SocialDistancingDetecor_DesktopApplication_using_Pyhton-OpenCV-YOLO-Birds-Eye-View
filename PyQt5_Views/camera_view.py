@@ -20,7 +20,6 @@ class RecordVideo(QtCore.QObject):
         self.timer = QtCore.QBasicTimer()
     def start_recording(self):
         self.timer.start(0, self)
-
     def timerEvent(self, event):
         if(event.timerId() != self.timer.timerId()):
             return
@@ -112,7 +111,7 @@ class SoicalDistanceDetectedWidget(QtWidgets.QWidget):
                 Assign person detected informations which is:
                     The person probability.
                     The bounding box coordinates,
-                    The centroid.
+                    The centrosid.
                 '''
                 r = (confidences[i], (x, y, x + w, y + h), centroids[i])    
                 results.append(r)
@@ -190,8 +189,3 @@ class MainWidget(QtWidgets.QWidget):
         self.net = cv2.dnn.readNetFromDarknet(self.YOLO_Config, self.YOLO_Weights)
         self.output_layer_names = self.net.getLayerNames()
         self.output_layer_names = [self.output_layer_names[i[0] - 1] for i in self.net.getUnconnectedOutLayers()]
-    
-
-
-
-
