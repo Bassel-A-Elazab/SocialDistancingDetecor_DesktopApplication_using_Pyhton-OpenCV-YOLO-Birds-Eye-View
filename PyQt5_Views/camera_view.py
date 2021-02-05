@@ -184,8 +184,9 @@ class SoicalDistanceDetectedWidget(QtWidgets.QWidget):
 
 class MainWidget(QtWidgets.QWidget):
     
-    def __init__(self, YOLO_config_path, YOLO_weights_path, arg_confidence, arg_threshold, arg_MIN_DISTANCE, parent=None):
+    def __init__(self, YOLO_config_path, YOLO_weights_path, camera_or_path,arg_confidence, arg_threshold, arg_MIN_DISTANCE, parent=None):
         super().__init__(parent)
+        self.port = camera_or_path
         self.YOLO_Weights = YOLO_weights_path
         self.YOLO_Config = YOLO_config_path
         self.confidence = arg_confidence
@@ -195,3 +196,41 @@ class MainWidget(QtWidgets.QWidget):
         self.net = cv2.dnn.readNetFromDarknet(self.YOLO_Config, self.YOLO_Weights)
         self.output_layer_names = self.net.getLayerNames()
         self.output_layer_names = [self.output_layer_names[i[0] - 1] for i in self.net.getUnconnectedOutLayers()]
+
+        self.social_detection_widget = SoicalDistanceDetectedWidget(self.net, self.output_layer_names, self.confidence, self.threshold, self.MIN_DISTANCE, parent=None)
+
+        # TODO: set video port
+        self.record_video = RecordVideo(self.port)
+
+        Image_Data_Mark = self.social_detection_widget.Image_Data_Mark
+        self.record_video.image_data.connect(Image_Data_Mark)
+
+        layout = QtWidgets.QVBoxLayout()
+
+        self.open_camera = QtWidgets.QPushButton('Open Camera')
+        self.open_video = QtWidgets.QPushButton('Load Video')
+        self.start = QtWidgets.QPushButton('Start')
+        self.stop = QtWidgets.QPushButton('Stop')
+
+        layout.addWidget(self.social_detection_widget)
+        
+        layout.addWidget(self.open_camera)
+        layout.addWidget(self.open_video)
+        layout.addWidget(self.start)
+        layout.addWidget(self.stop)
+
+        self.open_camera.clicked.connect(self.record_video.start_recording)
+        self.open_video.clicked.connect(self.record_video.start_recording)
+        self.start.clicked.connect(self.record_video.start_recording)
+        self.stop.clicked.connect(self.record_video.stop_recording)
+
+        self.setLayout(layout)
+
+if __name__ == '__main__':
+    app = QtWidgets.QApplication(sys.argv)
+
+    main_window = QtWidgets.QMainWindow()
+    main_widget = MainWidget('../yolo_models/yolov3.cfg', '../yolo_models/yolov3.weights','1.mp4', 0.5, 0.3, 50)
+    main_window.setCentralWidget(main_widget)
+    main_window.show()
+    sys.exit(app.exec_())
