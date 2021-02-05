@@ -18,9 +18,13 @@ class RecordVideo(QtCore.QObject):
         super().__init__(parent)
         self.camera = cv2.VideoCapture(camera_path_port)
         self.timer = QtCore.QBasicTimer()
-    def start_recording(self):
+
+    def start_recording(self):                  # for playing video
         self.timer.start(0, self)
 
+    def stop_recording(self):                   # for stopping video
+        self.timer.stop()
+    
     def timerEvent(self, event):
         if(event.timerId() != self.timer.timerId()):
             return
