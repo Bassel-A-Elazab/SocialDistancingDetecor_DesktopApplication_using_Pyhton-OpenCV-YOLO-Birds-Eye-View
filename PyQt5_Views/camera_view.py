@@ -162,7 +162,7 @@ class SoicalDistanceDetectedWidget(QtWidgets.QWidget):
                 
             cv2.rectangle(image_data, (startX, startY), (endX, endY), color, 2)
             cv2.circle(image_data, (cX, cY), 5, color, 1)
-
+            
         self.frame = self.get_qimage(image_data)
         if self.frame.size() != self.size():
             self.setFixedSize(self.frame.size())
@@ -190,7 +190,7 @@ class MainWidget(QtWidgets.QWidget):
     
     def __init__(self, YOLO_config_path, YOLO_weights_path,arg_confidence, arg_threshold, arg_MIN_DISTANCE, parent=None):
         super().__init__(parent)
-        
+        self.port = 0
         self.YOLO_Weights = YOLO_weights_path
         self.YOLO_Config = YOLO_config_path
         self.confidence = arg_confidence
@@ -203,8 +203,7 @@ class MainWidget(QtWidgets.QWidget):
 
         self.social_detection_widget = SoicalDistanceDetectedWidget(self.net, self.output_layer_names, self.confidence, self.threshold, self.MIN_DISTANCE, parent=None)
 
-
-        self.record_video = RecordVideo(0)
+        self.record_video = RecordVideo(self.port)
 
         Image_Data_Mark = self.social_detection_widget.Image_Data_Mark
         self.record_video.image_data.connect(Image_Data_Mark)
@@ -234,13 +233,5 @@ class MainWidget(QtWidgets.QWidget):
         path = QtWidgets.QFileDialog.getOpenFileName(self)[0]
         if path:
             self.record_video.setVideoFile(path)
-        
-if __name__ == '__main__':
-    app = QtWidgets.QApplication(sys.argv)
 
-    main_window = QtWidgets.QMainWindow()
-    main_widget = MainWidget('../yolo_models/yolov3.cfg', '../yolo_models/yolov3.weights', 0.5, 0.3, 50)
-    main_window.setCentralWidget(main_widget)
-    main_window.show()
-    sys.exit(app.exec_())
 
