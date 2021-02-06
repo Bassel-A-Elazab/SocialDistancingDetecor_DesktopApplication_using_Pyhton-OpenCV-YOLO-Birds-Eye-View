@@ -9,7 +9,7 @@ class LoginForm(QtWidgets.QMainWindow):
         self.Application = CameraModule()
         self.lineEdit_username = self.findChild(QtWidgets.QLineEdit, 'userName') # Find the EditLine
         self.lineEdit_password = self.findChild(QtWidgets.QLineEdit, 'password') # Find the EditLine
-        self.button_login = self.findChild(QtWidgets.QPushButton, 'login') # Find the EditLine
+        self.button_login = self.findChild(QtWidgets.QPushButton, 'login') # Find the login button
         self.button_login.clicked.connect(self.check_username_password)
         
     def check_username_password(self):
