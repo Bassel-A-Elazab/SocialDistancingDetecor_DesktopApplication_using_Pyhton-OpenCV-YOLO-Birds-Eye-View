@@ -15,7 +15,7 @@ class CameraModule(QtWidgets.QMainWindow):
         self.button_load_video.clicked.connect(self.load_video_file)
     
     def open_camera_live(self):
-        self.open_camera
+        self.open_camera.show()
     
     def load_video_file(self):
         self.load_video.show()
