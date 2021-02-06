@@ -173,11 +173,13 @@ def detected_minimum_distance_peoples(frame, boxes, confidences, centroids, conf
             (startX, startY, endX, endY) = bbox      # extract the bounding box.
             (cX, cY) = centroid                     # extract the centroid coordinates.
             color = (0, 255, 0)
-
+            
             # Change the color to red if the index pair exists within the violation set.
             if i in violate:
                 color = (0, 0, 255)
-            
+                crop_image = frame[startY :  + endY, startX : endX]
+                cv2.imwrite("output/image"+str(i)+".png",crop_image )
+
             cv2.rectangle(frame, (startX, startY), (endX, endY), color, 2)
             cv2.circle(frame, (cX, cY), 5, color, 1)
 
