@@ -192,9 +192,8 @@ class SoicalDistanceDetectedWidget(QtWidgets.QWidget):
 
 class MainWidget(QtWidgets.QWidget):
     
-    def __init__(self, YOLO_config_path, YOLO_weights_path, arg_port, arg_confidence, arg_threshold, arg_MIN_DISTANCE, parent=None):
+    def __init__(self, YOLO_config_path, YOLO_weights_path, arg_confidence, arg_threshold, arg_MIN_DISTANCE, parent=None):
         super().__init__(parent)
-        self.port = arg_port
         self.YOLO_Weights = YOLO_weights_path
         self.YOLO_Config = YOLO_config_path
         self.confidence = arg_confidence
@@ -207,7 +206,7 @@ class MainWidget(QtWidgets.QWidget):
 
         self.social_detection_widget = SoicalDistanceDetectedWidget(self.net, self.output_layer_names, self.confidence, self.threshold, self.MIN_DISTANCE, parent=None)
 
-        self.record_video = RecordVideo(self.port)
+        self.record_video = RecordVideo()
 
         Image_Data_Mark = self.social_detection_widget.Image_Data_Mark
         self.record_video.image_data.connect(Image_Data_Mark)
@@ -241,6 +240,7 @@ class MainWidget(QtWidgets.QWidget):
         self.record_video.setVideoPort()
         self.record_video.start_recording
 
+'''
 if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)
 
@@ -249,5 +249,6 @@ if __name__ == '__main__':
     main_window.setCentralWidget(main_widget)
     main_window.show()
     sys.exit(app.exec_())
+    '''
 
 
