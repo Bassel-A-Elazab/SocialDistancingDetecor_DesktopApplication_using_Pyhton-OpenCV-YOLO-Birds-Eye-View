@@ -120,8 +120,8 @@
    <widget class="QWidget" name="gridLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>280</x>
-      <y>230</y>
+      <x>10</x>
+      <y>220</y>
       <width>251</width>
       <height>311</height>
      </rect>
@@ -163,6 +163,17 @@
       </widget>
      </item>
     </layout>
+   </widget>
+   <widget class="QWidget" name="verticalLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>280</x>
+      <y>150</y>
+      <width>511</width>
+      <height>401</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="disp_video"/>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
