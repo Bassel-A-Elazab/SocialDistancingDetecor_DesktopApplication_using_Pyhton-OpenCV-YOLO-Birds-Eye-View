@@ -194,6 +194,7 @@ class MainWidget(QtWidgets.QWidget):
     
     def __init__(self, YOLO_config_path, YOLO_weights_path, arg_confidence, arg_threshold, arg_MIN_DISTANCE, parent=None):
         super().__init__(parent)
+
         self.YOLO_Weights = YOLO_weights_path
         self.YOLO_Config = YOLO_config_path
         self.confidence = arg_confidence
@@ -212,33 +213,8 @@ class MainWidget(QtWidgets.QWidget):
         self.record_video.image_data.connect(Image_Data_Mark)
 
         layout = QtWidgets.QVBoxLayout()
-
-        self.open_camera = QtWidgets.QPushButton('Open Camera')
-        self.open_video = QtWidgets.QPushButton('Load Video')
-        self.start = QtWidgets.QPushButton('Start')
-        self.stop = QtWidgets.QPushButton('Stop')
-
         layout.addWidget(self.social_detection_widget)
-        
-        layout.addWidget(self.open_camera)
-        layout.addWidget(self.open_video)
-        layout.addWidget(self.start)
-        layout.addWidget(self.stop)
-
-        self.open_camera.clicked.connect(self.record_video.start_recording)
-        self.open_video.clicked.connect(self.upload_video_file)
-        self.start.clicked.connect(self.start_video)
-        self.stop.clicked.connect(self.record_video.stop_recording)
         self.setLayout(layout)
-
-    def upload_video_file(self):
-        path = QtWidgets.QFileDialog.getOpenFileName(self)[0]
-        if path:
-            self.record_video.setVideoFile(path)
-    
-    def start_video(self):
-        self.record_video.setVideoPort()
-        self.record_video.start_recording
 
 '''
 if __name__ == '__main__':
