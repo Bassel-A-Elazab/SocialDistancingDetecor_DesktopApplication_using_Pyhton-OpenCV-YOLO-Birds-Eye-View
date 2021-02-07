@@ -14,11 +14,15 @@ from PyQt5 import QtGui
 class RecordVideo(QtCore.QObject):
     image_data = QtCore.pyqtSignal(np.ndarray)
 
-    def __init__(self, camera_path_port, parent=None):
+    def __init__(self, parent=None):
         super().__init__(parent)
-        self.camera = cv2.VideoCapture(camera_path_port)
+        self.camera = None
         self.timer = QtCore.QBasicTimer()
 
+    def setVideoPort(self):
+        self.camera = cv2.VideoCapture(0)
+        self.timer = QtCore.QBasicTimer()
+    
     def setVideoFile(self, path):
         self.camera = cv2.VideoCapture(path)
         self.timer = QtCore.QBasicTimer()
@@ -188,9 +192,9 @@ class SoicalDistanceDetectedWidget(QtWidgets.QWidget):
 
 class MainWidget(QtWidgets.QWidget):
     
-    def __init__(self, YOLO_config_path, YOLO_weights_path,arg_confidence, arg_threshold, arg_MIN_DISTANCE, parent=None):
+    def __init__(self, YOLO_config_path, YOLO_weights_path, arg_port, arg_confidence, arg_threshold, arg_MIN_DISTANCE, parent=None):
         super().__init__(parent)
-        self.port = 0
+        self.port = arg_port
         self.YOLO_Weights = YOLO_weights_path
         self.YOLO_Config = YOLO_config_path
         self.confidence = arg_confidence
@@ -223,15 +227,27 @@ class MainWidget(QtWidgets.QWidget):
         layout.addWidget(self.stop)
 
         self.open_camera.clicked.connect(self.record_video.start_recording)
-        self.open_video.clicked.connect(self.open)
-        self.start.clicked.connect(self.record_video.start_recording)
+        self.open_video.clicked.connect(self.upload_video_file)
+        self.start.clicked.connect(self.start_video)
         self.stop.clicked.connect(self.record_video.stop_recording)
-
         self.setLayout(layout)
 
-    def open(self):
+    def upload_video_file(self):
         path = QtWidgets.QFileDialog.getOpenFileName(self)[0]
         if path:
             self.record_video.setVideoFile(path)
+    
+    def start_video(self):
+        self.record_video.setVideoPort()
+        self.record_video.start_recording
+
+if __name__ == '__main__':
+    app = QtWidgets.QApplication(sys.argv)
+
+    main_window = QtWidgets.QMainWindow()
+    main_widget = MainWidget('../yolo_models/yolov3.cfg', '../yolo_models/yolov3.weights', 0, 0.5, 0.3, 50)
+    main_window.setCentralWidget(main_widget)
+    main_window.show()
+    sys.exit(app.exec_())
 
 
