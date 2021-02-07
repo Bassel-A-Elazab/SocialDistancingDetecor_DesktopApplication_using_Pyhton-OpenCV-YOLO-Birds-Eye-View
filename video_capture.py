@@ -18,7 +18,7 @@ class LoadVideo(QtWidgets.QMainWindow):
         self.threshold = 0.3
         self.MIN_DISTANCE = 50
 
-        self.ApplicationVideo = MainWidget(self.YOLO_Weights, self.YOLO_Config, self.confidence, self.threshold, self.MIN_DISTANCE)
+        self.ApplicationVideo = MainWidget(self.YOLO_Config, self.YOLO_Weights, self.confidence, self.threshold, self.MIN_DISTANCE)
         self.button_open_video = self.findChild(QtWidgets.QPushButton, 'file_open')
         self.button_start = self.findChild(QtWidgets.QPushButton, 'start') # Find the start button
         self.button_stop = self.findChild(QtWidgets.QPushButton, 'stop') # Find the stop button
@@ -27,12 +27,16 @@ class LoadVideo(QtWidgets.QMainWindow):
         self.button_quit = self.findChild(QtWidgets.QPushButton, 'quit') # Find the start button
 
         self.button_open_video.clicked.connect(self.upload_video)
-        self.button_start.clicked.connect(self.record_video.start_recording)
+        self.button_start.clicked.connect(self.start_video)
 
     def upload_video(self):
         path = QtWidgets.QFileDialog.getOpenFileName(self)[0]
         if path:
-            self.record_video.setVideoFile(path)
+            self.ApplicationVideo.record_video.setVideoFile(path)
+    
+    def start_video(self):
+        self.ApplicationVideo.record_video.start_recording()
+        self.ApplicationVideo.show()
     
 def main():
     app = QtWidgets.QApplication(sys.argv)
