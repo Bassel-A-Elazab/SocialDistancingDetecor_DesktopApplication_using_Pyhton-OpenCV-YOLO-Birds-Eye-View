@@ -1,14 +1,11 @@
-from PyQt5 import QtWidgets, uic
 import sys
 
-from PyQt5_Views.camera_view import RecordVideo, SoicalDistanceDetectedWidget
+from PyQt5 import QtCore, QtWidgets, QtGui, uic
 
 import cv2
 import numpy as np
 
-from PyQt5 import QtCore
-from PyQt5 import QtWidgets
-from PyQt5 import QtGui
+from PyQt5_Views.camera_view import RecordVideo, SoicalDistanceDetectedWidget
 
 class LoadVideo(QtWidgets.QMainWindow):
     def __init__(self, parent=None):
