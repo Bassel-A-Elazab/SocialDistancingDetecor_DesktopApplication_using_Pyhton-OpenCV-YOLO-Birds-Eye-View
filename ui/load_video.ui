@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>797</width>
+    <width>800</width>
     <height>600</height>
    </rect>
   </property>
@@ -14,182 +14,167 @@
    <string>MainWindow</string>
   </property>
   <property name="styleSheet">
-   <string notr="true"/>
+   <string notr="true">background-color: rgb(255, 255, 255);</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>570</x>
-      <y>0</y>
-      <width>231</width>
-      <height>91</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Sarai</family>
-      <pointsize>20</pointsize>
-      <weight>75</weight>
-      <italic>true</italic>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(238, 238, 236);</string>
-    </property>
-    <property name="text">
-     <string>Social Distance Analysis</string>
-    </property>
-    <property name="scaledContents">
-     <bool>true</bool>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>0</y>
-      <width>231</width>
-      <height>91</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="pixmap">
-     <pixmap>../../../pyqt5-login-form/index.jpeg</pixmap>
-    </property>
-    <property name="scaledContents">
-     <bool>true</bool>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_3">
-    <property name="geometry">
-     <rect>
-      <x>230</x>
-      <y>0</y>
-      <width>341</width>
-      <height>91</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Tlwg Typist</family>
-      <pointsize>17</pointsize>
-      <weight>75</weight>
-      <italic>false</italic>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(238, 238, 236);</string>
-    </property>
-    <property name="text">
-     <string>Welcome</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_4">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>90</y>
-      <width>801</width>
-      <height>51</height>
+      <x>100</x>
+      <y>20</y>
+      <width>581</width>
+      <height>61</height>
      </rect>
     </property>
     <property name="font">
      <font>
       <family>Tlwg Typo</family>
-      <pointsize>17</pointsize>
+      <pointsize>22</pointsize>
       <weight>75</weight>
-      <italic>false</italic>
       <bold>true</bold>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(211, 215, 207);</string>
+     <string notr="true">background-color: rgb(255, 255, 255);
+color: rgb(141, 131, 131);
+</string>
     </property>
     <property name="text">
-     <string>Load videos from databases</string>
+     <string>Load Videos</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
-   <widget class="QWidget" name="gridLayoutWidget">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>230</y>
-      <width>251</width>
-      <height>311</height>
-     </rect>
-    </property>
-    <layout class="QGridLayout" name="gridLayout">
-     <item row="3" column="0">
-      <widget class="QPushButton" name="pause">
-       <property name="text">
-        <string>Pause</string>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="0">
-      <widget class="QPushButton" name="end">
-       <property name="text">
-        <string>End</string>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="0">
-      <widget class="QPushButton" name="stop">
-       <property name="text">
-        <string>Stop</string>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="0">
-      <widget class="QPushButton" name="start">
-       <property name="text">
-        <string>Start</string>
-       </property>
-      </widget>
-     </item>
-     <item row="4" column="0">
-      <widget class="QPushButton" name="quit">
-       <property name="text">
-        <string>Quit</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </widget>
    <widget class="QPushButton" name="file_open">
     <property name="geometry">
      <rect>
-      <x>160</x>
-      <y>160</y>
-      <width>491</width>
+      <x>140</x>
+      <y>140</y>
+      <width>501</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>URW Gothic L</family>
+      <pointsize>15</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(143, 89, 2);
+color: rgb(255, 255, 255);
+border-radius: 20px;</string>
+    </property>
+    <property name="text">
+     <string>Choose video from the files ...</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="end">
+    <property name="geometry">
+     <rect>
+      <x>140</x>
+      <y>370</y>
+      <width>161</width>
       <height>51</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>URW Gothic L</family>
+      <pointsize>15</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color:rgb(178, 171, 171);
+color: rgb(255, 255, 255);
+border-radius: 20px;</string>
+    </property>
     <property name="text">
-     <string>Choose videos from here ...</string>
+     <string>End</string>
     </property>
    </widget>
-   <widget class="QWidget" name="add_video">
+   <widget class="QPushButton" name="pause">
     <property name="geometry">
      <rect>
-      <x>370</x>
+      <x>470</x>
       <y>250</y>
-      <width>381</width>
-      <height>291</height>
+      <width>161</width>
+      <height>51</height>
      </rect>
     </property>
-    <layout class="QVBoxLayout" name="disp_video"/>
+    <property name="font">
+     <font>
+      <family>URW Gothic L</family>
+      <pointsize>15</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color:rgb(178, 171, 171);
+color: rgb(255, 255, 255);
+border-radius: 20px;</string>
+    </property>
+    <property name="text">
+     <string>Pause</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="quit">
+    <property name="geometry">
+     <rect>
+      <x>470</x>
+      <y>370</y>
+      <width>161</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>URW Gothic L</family>
+      <pointsize>15</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color:rgb(178, 171, 171);
+color: rgb(255, 255, 255);
+border-radius: 20px;</string>
+    </property>
+    <property name="text">
+     <string>Quit</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="start">
+    <property name="geometry">
+     <rect>
+      <x>140</x>
+      <y>250</y>
+      <width>161</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>URW Gothic L</family>
+      <pointsize>15</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color:rgb(178, 171, 171);
+color: rgb(255, 255, 255);
+border-radius: 20px;</string>
+    </property>
+    <property name="text">
+     <string>Start</string>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -197,7 +182,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>797</width>
+     <width>800</width>
      <height>22</height>
     </rect>
    </property>
