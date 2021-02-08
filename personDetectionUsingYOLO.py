@@ -178,7 +178,6 @@ def detected_minimum_distance_peoples(frame, boxes, confidences, centroids, conf
             if i in violate:
                 color = (0, 0, 255)
                 crop_image = frame[startY :  + endY, startX : endX]
-                cv2.imwrite("output/image"+str(i)+".png",crop_image )
 
             cv2.rectangle(frame, (startX, startY), (endX, endY), color, 2)
             cv2.circle(frame, (cX, cY), 5, color, 1)
@@ -210,7 +209,7 @@ if args.show:
     cv2.waitKey(0)
         
 if args.save:
-    cv2.imwrite(f'output/{args.image_path.split("/")[-1]}', image)
+    cv2.imwrite(f'sample_output/{args.image_path.split("/")[-1]}', image)
 cv2.destroyAllWindows()
 
 
