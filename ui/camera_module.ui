@@ -7,27 +7,30 @@
     <x>0</x>
     <y>0</y>
     <width>800</width>
-    <height>599</height>
+    <height>600</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(255, 255, 255);</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>0</x>
-      <y>0</y>
-      <width>231</width>
-      <height>91</height>
+      <x>250</x>
+      <y>30</y>
+      <width>261</width>
+      <height>141</height>
      </rect>
     </property>
     <property name="text">
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>../../../pyqt5-login-form/index.jpeg</pixmap>
+     <pixmap>logo/logo.jpg</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -36,53 +39,27 @@
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>570</x>
-      <y>0</y>
-      <width>231</width>
-      <height>91</height>
+      <x>90</x>
+      <y>250</y>
+      <width>581</width>
+      <height>61</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <family>Sarai</family>
-      <pointsize>20</pointsize>
-      <weight>75</weight>
-      <italic>true</italic>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(238, 238, 236);</string>
-    </property>
-    <property name="text">
-     <string>Social Distance Analysis</string>
-    </property>
-    <property name="scaledContents">
-     <bool>true</bool>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_4">
-    <property name="geometry">
-     <rect>
-      <x>150</x>
-      <y>170</y>
-      <width>481</width>
-      <height>81</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Ubuntu Condensed</family>
-      <pointsize>19</pointsize>
+      <family>Tlwg Typo</family>
+      <pointsize>22</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(114, 159, 207);</string>
+     <string notr="true">background-color: rgb(255, 255, 255);
+color: rgb(141, 131, 131);
+</string>
     </property>
     <property name="text">
-     <string>Choose the type of your system</string>
+     <string>Type of the system</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
@@ -91,20 +68,24 @@
    <widget class="QPushButton" name="camera">
     <property name="geometry">
      <rect>
-      <x>90</x>
-      <y>340</y>
-      <width>211</width>
-      <height>141</height>
+      <x>80</x>
+      <y>390</y>
+      <width>251</width>
+      <height>81</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <family>Sarai</family>
-      <pointsize>22</pointsize>
+      <family>URW Gothic L</family>
+      <pointsize>15</pointsize>
       <weight>75</weight>
-      <italic>true</italic>
       <bold>true</bold>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color:rgb(178, 171, 171);
+color: rgb(255, 255, 255);
+border-radius: 20px;</string>
     </property>
     <property name="text">
      <string>Live Streaming</string>
@@ -114,50 +95,26 @@
     <property name="geometry">
      <rect>
       <x>480</x>
-      <y>340</y>
-      <width>211</width>
-      <height>141</height>
+      <y>390</y>
+      <width>251</width>
+      <height>81</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <family>Sarai</family>
-      <pointsize>22</pointsize>
+      <family>URW Gothic L</family>
+      <pointsize>15</pointsize>
       <weight>75</weight>
-      <italic>true</italic>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="text">
-     <string>Load Videos</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_3">
-    <property name="geometry">
-     <rect>
-      <x>230</x>
-      <y>0</y>
-      <width>341</width>
-      <height>91</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Tlwg Typist</family>
-      <pointsize>17</pointsize>
-      <weight>75</weight>
-      <italic>false</italic>
       <bold>true</bold>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(238, 238, 236);</string>
+     <string notr="true">background-color:rgb(178, 171, 171);
+color: rgb(255, 255, 255);
+border-radius: 20px;</string>
     </property>
     <property name="text">
-     <string>Welcome</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
+     <string>Load Video</string>
     </property>
    </widget>
   </widget>
