@@ -15,7 +15,7 @@ class LoginForm(QtWidgets.QMainWindow):
     def check_username_password(self):
         msg = QtWidgets.QMessageBox()
 
-        if self.lineEdit_username.text() == 'Bassel' and self.lineEdit_password.text() == '1996':
+        if self.lineEdit_username.text() == 'Sara' and self.lineEdit_password.text() == '1996':
             self.close()
             self.Application.show()
 
