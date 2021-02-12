@@ -21,15 +21,27 @@ class DecideCameraVideo():
         self.capturing = True
         cap = self.c
         while(self.capturing):
-            ret, frame = cap.read() 
+            ret, frame = cap.read()
+            if frame is None:
+                self.capturing = False
+                cv2.destroyAllWindows()
+                return 
             cv2.imshow("Frame", frame)
             cv2.waitKey(5)
         cv2.destroyAllWindows()
-
+        
     def pauseCapture(self):
         if cv2.waitKey(0) & 0xFF == ord('p'):  # Pause
             self.capturing = False
 
     def endCapture(self):
         self.capturing = False
+        self.c = None
+        cv2.destroyAllWindows()
+    
+    def quitCapture(self):
+        cap = self.c
+        self.c = None
+        cv2.destroyAllWindows()
+        
     
