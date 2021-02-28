@@ -24,7 +24,7 @@ public class DetectedPeoplesList {
     }
 
     public void setDetectedPeoples(ArrayList<DetectedPeoples> detectedPeoplesList){
-        detectedPeoplesList = detectedPeoplesList;
+        this.detectedPeoplesList = detectedPeoplesList;
     }
     public ArrayList<DetectedPeoples> getDetectedPeoples(){
         return detectedPeoplesList;
