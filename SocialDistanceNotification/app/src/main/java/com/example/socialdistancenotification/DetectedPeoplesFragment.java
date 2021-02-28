@@ -19,7 +19,7 @@ import java.util.ArrayList;
 public abstract class DetectedPeoplesFragment extends Fragment {
 
     private DetectedPeoplesList detectedPeoplesList = new DetectedPeoplesList();
-    DetectedPeoplesListController detectedPeoplesController = new DetectedPeoplesListController(detectedPeoplesList);
+    DetectedPeoplesListController detectedPeoplesListController = new DetectedPeoplesListController(detectedPeoplesList);
 
     View rootView;
     private ListView listView;
@@ -37,7 +37,7 @@ public abstract class DetectedPeoplesFragment extends Fragment {
         context = getContext();
 
         // Don't update view yet. Wait until after items have been filtered.
-        detectedPeoplesList.loadDetectedPeoples(context);
+        detectedPeoplesListController.loadDetectedPeoples(context);
         update = true;
 
         this.inflater = inflater;
@@ -48,6 +48,19 @@ public abstract class DetectedPeoplesFragment extends Fragment {
 
     public void loadDetectedPeoples(Fragment fragment){
         this.fragment = fragment;
-        detectedPeoplesList.loadDetectedPeoples(context);
+        detectedPeoplesListController.loadDetectedPeoples(context);
     }
+
+    public void setVariables(int resource, int id){
+        rootView = inflater.inflate(resource, container, false);
+        listView = (ListView) rootView.findViewById(id);
+        selectedDetected = filterDetectedPeoples();
+    }
+
+    /**
+     * filterDetectedPeoples is implemented independently by AllDetectedPeoplesFragment
+     * @return selected_items
+     */
+
+    public abstract ArrayList<DetectedPeoples> filterDetectedPeoples();
 }
