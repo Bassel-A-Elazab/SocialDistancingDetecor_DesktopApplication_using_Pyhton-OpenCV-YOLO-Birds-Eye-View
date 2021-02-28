@@ -7,6 +7,10 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 
+/**
+ * Displays a list of all DetectedPeoples
+ */
+
 public class AllDetectedPeoplesFragment extends DetectedPeoplesFragment{
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
