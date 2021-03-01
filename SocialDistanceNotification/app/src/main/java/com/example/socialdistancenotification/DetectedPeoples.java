@@ -19,11 +19,11 @@ public class DetectedPeoples {
 
         this.detectedDate = detectedDate;
         this.detectedImage = detectedImage;
-
+        addDetectedImage(detectedImage);
         if(detectedID == null){
-
+            setDetectedID();
         }else{
-
+            updateID(detectedID);
         }
     }
 
