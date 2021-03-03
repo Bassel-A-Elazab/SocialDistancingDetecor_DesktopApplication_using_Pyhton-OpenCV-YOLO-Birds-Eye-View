@@ -1,66 +1,77 @@
 package com.example.socialdistancenotification;
 
 import android.graphics.Bitmap;
-
-import java.io.ByteArrayOutputStream;
-
 import android.graphics.BitmapFactory;
 import android.util.Base64;
-import java.util.Date;
+
+import java.io.ByteArrayOutputStream;
 import java.util.UUID;
 
-public class DetectedPeoples {
-    private String detectedID;
-    private Date detectedDate;
-    protected transient Bitmap detectedImage;
+/**
+ * DetectedPeoples class
+ */
+
+public class DetectedPeoples extends Observable {
+
+    private String Id;
+    private String date;
+    protected transient Bitmap image;
     protected String image_base64;
 
-    public DetectedPeoples(String detectedID, Date detectedDate, Bitmap detectedImage){
 
-        this.detectedDate = detectedDate;
-        this.detectedImage = detectedImage;
-        addDetectedImage(detectedImage);
-        if(detectedID == null){
-            setDetectedID();
-        }else{
-            updateID(detectedID);
+    public DetectedPeoples(String Id, String date, Bitmap image) {
+
+        this.date = date;
+        addImage(image);
+
+        if (Id == null){
+            setId();
+        } else {
+            updateId(Id);
         }
     }
 
-    public String getDetectedID(){
-        return this.detectedID;
-    }
-    public void setDetectedID(){
-        this.detectedID = UUID.randomUUID().toString();
-    }
-    public void updateID(String detectedID){
-        this.detectedID = detectedID;
+    public String getId(){
+        return this.Id;
     }
 
-    public void setDetectedDate(Date detectedDate){
-        this.detectedDate = detectedDate;
-    }
-    public Date getDetectedDate(){
-        return this.detectedDate;
+    public void setId() {
+        this.Id = UUID.randomUUID().toString();
+        notifyObservers();
     }
 
-    public void addDetectedImage(Bitmap newImage){
-        if(newImage != null){
-            detectedImage = newImage;
+    public void updateId(String id){
+        this.Id = id;
+        notifyObservers();
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+        notifyObservers();
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void addImage(Bitmap new_image){
+        if (new_image != null) {
+            image = new_image;
             ByteArrayOutputStream byteArrayBitmapStream = new ByteArrayOutputStream();
-            newImage.compress(Bitmap.CompressFormat.PNG, 100, byteArrayBitmapStream);
+            new_image.compress(Bitmap.CompressFormat.PNG, 100, byteArrayBitmapStream);
 
             byte[] b = byteArrayBitmapStream.toByteArray();
             image_base64 = Base64.encodeToString(b, Base64.DEFAULT);
         }
+        notifyObservers();
     }
 
-    public Bitmap getDetectedImage(){
-        if (detectedImage == null && image_base64 != null) {
+    public Bitmap getImage(){
+        if (image == null && image_base64 != null) {
             byte[] decodeString = Base64.decode(image_base64, Base64.DEFAULT);
-            detectedImage = BitmapFactory.decodeByteArray(decodeString, 0, decodeString.length);
+            image = BitmapFactory.decodeByteArray(decodeString, 0, decodeString.length);
+            notifyObservers();
         }
-        return detectedImage;
+        return image;
     }
-
 }
