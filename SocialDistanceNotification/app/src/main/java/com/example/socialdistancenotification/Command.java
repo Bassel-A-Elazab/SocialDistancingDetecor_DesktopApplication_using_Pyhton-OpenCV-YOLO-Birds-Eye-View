@@ -1,6 +1,11 @@
 package com.example.socialdistancenotification;
 
+/**
+ * Superclass of AddDetectedPeoplesCommand
+ */
+
 public abstract class Command {
+
     private boolean is_executed;
 
     public Command(){
@@ -13,7 +18,7 @@ public abstract class Command {
         return is_executed;
     }
 
-    public void setIsExecuted(boolean is_executed){
+    public void setIsExecuted(boolean is_executed) {
         this.is_executed = is_executed;
     }
 }
