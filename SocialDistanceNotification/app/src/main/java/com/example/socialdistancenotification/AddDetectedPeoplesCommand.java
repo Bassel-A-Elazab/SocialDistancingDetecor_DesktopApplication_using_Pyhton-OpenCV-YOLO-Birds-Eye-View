@@ -1,9 +1,8 @@
 package com.example.socialdistancenotification;
-
 import android.content.Context;
 
 /**
- * Command to add Detected Peoples come from Python script.
+ * Command to add Detected Peoples come from Pyhton-Opencv.
  */
 
 public class AddDetectedPeoplesCommand extends Command{
@@ -12,14 +11,13 @@ public class AddDetectedPeoplesCommand extends Command{
     private DetectedPeoples detectedPeoples;
     private Context context;
 
-    public AddDetectedPeoplesCommand(DetectedPeoplesList detectedPeoplesList, DetectedPeoples detectedPeoples, Context context){
+    public AddDetectedPeoplesCommand(DetectedPeoplesList detectedPeoplesList, DetectedPeoples detectedPeoples, Context context) {
         this.detectedPeoplesList = detectedPeoplesList;
         this.detectedPeoples = detectedPeoples;
         this.context = context;
     }
 
-    @Override
-    public void execute() {
+    public void execute(){
         detectedPeoplesList.addDetectedPeoples(detectedPeoples);
         setIsExecuted(detectedPeoplesList.saveDetectedPeoples(context));
     }
