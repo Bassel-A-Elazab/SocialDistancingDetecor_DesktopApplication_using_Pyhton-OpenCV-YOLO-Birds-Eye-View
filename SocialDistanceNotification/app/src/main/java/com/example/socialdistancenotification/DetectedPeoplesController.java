@@ -2,8 +2,7 @@ package com.example.socialdistancenotification;
 
 import android.graphics.Bitmap;
 
-import java.util.Date;
-import java.util.UUID;
+import java.time.LocalDate;
 
 /**
  * DetectedPeoplesController is responsible for all communication between views and Detected Peoples object
@@ -17,30 +16,37 @@ public class DetectedPeoplesController {
         this.detectedPeoples = detectedPeoples;
     }
 
-    public String getDetectedID(){
-        return detectedPeoples.getDetectedID();
-    }
-    public void setDetectedID(){
-        detectedPeoples.setDetectedID();
+    public String getId(){
+        return detectedPeoples.getId();
     }
 
-    public void setDetectedDate(Date detectedDate){
-        detectedPeoples.setDetectedDate(detectedDate);
+    public void setId() {
+        detectedPeoples.setId();
     }
-    public Date getDetectedDate(){
-        return detectedPeoples.getDetectedDate();
+
+    public void setDate(LocalDate date) {
+        detectedPeoples.setDate(date);
+    }
+
+    public LocalDate getDate(){
+        return detectedPeoples.getDate();
+    }
+
+    public void setTime(String time){
+        detectedPeoples.setTime(time);
+    }
+    public String getTime(){
+        return detectedPeoples.getTime();
     }
 
     public void addImage(Bitmap new_image){
-        detectedPeoples.addDetectedImage(new_image);
+        detectedPeoples.addImage(new_image);
     }
 
     public Bitmap getImage(){
-        return detectedPeoples.getDetectedImage();
+        return detectedPeoples.getImage();
     }
 
-    public DetectedPeoples getDetectedPeoples() {
-        return this.detectedPeoples;
-    }
+    public DetectedPeoples getDetectedPeoples() { return this.detectedPeoples; }
 
 }
