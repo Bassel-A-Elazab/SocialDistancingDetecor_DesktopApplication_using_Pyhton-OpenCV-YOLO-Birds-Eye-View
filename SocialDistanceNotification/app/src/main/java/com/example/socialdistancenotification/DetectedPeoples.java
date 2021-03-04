@@ -5,23 +5,29 @@ import android.graphics.BitmapFactory;
 import android.util.Base64;
 
 import java.io.ByteArrayOutputStream;
+import java.time.LocalDate;
 import java.util.UUID;
 
 /**
  * DetectedPeoples class
  */
 
-public class DetectedPeoples extends Observable {
+public class DetectedPeoples{
 
     private String Id;
-    private String date;
+    private LocalDate date;
+    private String time;
+    private int countDetected;
+
     protected transient Bitmap image;
     protected String image_base64;
 
 
-    public DetectedPeoples(String Id, String date, Bitmap image) {
+    public DetectedPeoples(String Id, LocalDate date, String time, int countDetected, Bitmap image) {
 
         this.date = date;
+        this.time = time;
+        this.countDetected = countDetected;
         addImage(image);
 
         if (Id == null){
@@ -37,21 +43,24 @@ public class DetectedPeoples extends Observable {
 
     public void setId() {
         this.Id = UUID.randomUUID().toString();
-        notifyObservers();
     }
 
     public void updateId(String id){
         this.Id = id;
-        notifyObservers();
     }
 
-    public void setDate(String date) {
+    public void setDate(LocalDate date) {
         this.date = date;
-        notifyObservers();
+    }
+    public LocalDate getDate() {
+        return date;
     }
 
-    public String getDate() {
-        return date;
+    public void setTime(String time){
+        this.time = time;
+    }
+    public String getTime(){
+        return this.time;
     }
 
     public void addImage(Bitmap new_image){
@@ -63,14 +72,12 @@ public class DetectedPeoples extends Observable {
             byte[] b = byteArrayBitmapStream.toByteArray();
             image_base64 = Base64.encodeToString(b, Base64.DEFAULT);
         }
-        notifyObservers();
     }
 
     public Bitmap getImage(){
         if (image == null && image_base64 != null) {
             byte[] decodeString = Base64.decode(image_base64, Base64.DEFAULT);
             image = BitmapFactory.decodeByteArray(decodeString, 0, decodeString.length);
-            notifyObservers();
         }
         return image;
     }
