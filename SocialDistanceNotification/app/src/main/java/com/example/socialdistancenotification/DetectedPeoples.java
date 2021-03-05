@@ -63,6 +63,13 @@ public class DetectedPeoples{
         return this.time;
     }
 
+    public void setCountDetected(int countDetected){
+        this.countDetected = countDetected;
+    }
+    public int getCountDetected(){
+        return this.countDetected;
+    }
+
     public void addImage(Bitmap new_image){
         if (new_image != null) {
             image = new_image;
