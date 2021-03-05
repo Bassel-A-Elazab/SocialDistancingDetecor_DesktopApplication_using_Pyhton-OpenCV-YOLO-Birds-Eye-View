@@ -32,6 +32,13 @@ public class DetectedPeoplesController {
         return detectedPeoples.getDate();
     }
 
+    public void setCountDetected(int countDetected){
+        detectedPeoples.setCountDetected(countDetected);
+    }
+    public int getCountDetected(){
+        return detectedPeoples.getCountDetected();
+    }
+
     public void setTime(String time){
         detectedPeoples.setTime(time);
     }
