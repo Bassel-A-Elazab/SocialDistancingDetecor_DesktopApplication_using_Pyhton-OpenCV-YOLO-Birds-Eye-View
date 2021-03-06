@@ -1,8 +1,9 @@
 <resources>
 
     <string name="app_name">Social Distance</string>
-    <string name="date">Date</string>
-    <string name="time">time</string>
+    <string name="date_hint">Date</string>
+    <string name="time_hint">Time</string>
+    <string name="count_hint">Detected Count</string>
     <string name="image_icon">Image Icon</string>
 
 </resources>
