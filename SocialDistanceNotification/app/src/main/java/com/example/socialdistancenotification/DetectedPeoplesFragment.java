@@ -1,39 +1,38 @@
 package com.example.socialdistancenotification;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-
-import androidx.fragment.app.Fragment;
 
 import java.util.ArrayList;
 
 /**
  * Superclass of DetectedPeoplesFragment
  */
-
 public abstract class DetectedPeoplesFragment extends Fragment {
 
     private DetectedPeoplesList detectedPeoplesList = new DetectedPeoplesList();
     DetectedPeoplesListController detectedPeoplesListController = new DetectedPeoplesListController(detectedPeoplesList);
 
     View rootView;
-    private ListView listView;
+    private ListView list_view;
     private ArrayAdapter<DetectedPeoples> adapter;
-    private ArrayList<DetectedPeoples> selectedDetected;
+    private ArrayList<DetectedPeoples> selected_items;
     private LayoutInflater inflater;
     private ViewGroup container;
     private Context context;
     private Fragment fragment;
     private boolean update = false;
 
-
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         context = getContext();
 
         // Don't update view yet. Wait until after items have been filtered.
@@ -46,21 +45,29 @@ public abstract class DetectedPeoplesFragment extends Fragment {
         return rootView;
     }
 
-    public void loadDetectedPeoples(Fragment fragment){
+    public void setVariables(int resource, int id ) {
+        rootView = inflater.inflate(resource, container, false);
+        list_view = (ListView) rootView.findViewById(id);
+        selected_items = filterItems();
+        update();
+    }
+
+    public void loadItems(Fragment fragment){
         this.fragment = fragment;
         detectedPeoplesListController.loadDetectedPeoples(context);
+        update();
     }
 
-    public void setVariables(int resource, int id){
-        rootView = inflater.inflate(resource, container, false);
-        listView = (ListView) rootView.findViewById(id);
-        selectedDetected = filterDetectedPeoples();
-    }
+    public abstract ArrayList<DetectedPeoples> filterItems();
 
     /**
-     * filterDetectedPeoples is implemented independently by AllDetectedPeoplesFragment
-     * @return selected_items
+     * Update the view
      */
-
-    public abstract ArrayList<DetectedPeoples> filterDetectedPeoples();
+    public void update(){
+        if (update) {
+            adapter = new DetectedPeoplesAdapter(context, 0,selected_items);
+            list_view.setAdapter(adapter);
+            adapter.notifyDataSetChanged();
+        }
+    }
 }
