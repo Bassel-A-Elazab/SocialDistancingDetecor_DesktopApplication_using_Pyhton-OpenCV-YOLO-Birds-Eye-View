@@ -11,19 +11,19 @@ import java.util.ArrayList;
  * Displays a list of all DetectedPeoples
  */
 
-public class AllDetectedPeoplesFragment extends DetectedPeoplesFragment{
+public class AllDetectedPeoplesFragment extends DetectedPeoplesFragment {
 
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
-
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
-        super.setVariables(R.layout.all_detectedpeoples_fragment, R.id.my_detectedPeoples);
-        super.loadDetectedPeoples(AllDetectedPeoplesFragment.this);
-
+        super.setVariables(R.layout.all_detectedpeoples_fragment, R.id.my_detectedPeoples_listView);
+        super.loadItems(AllDetectedPeoplesFragment.this);
         return rootView;
     }
 
     @Override
-    public ArrayList<DetectedPeoples> filterDetectedPeoples() {
-        return detectedPeoplesListController.getDetectedPeoplesArrayList();
+    public ArrayList<DetectedPeoples> filterItems() {
+        return detectedPeoplesListController.getDetectedPeoples();
     }
 }
+
