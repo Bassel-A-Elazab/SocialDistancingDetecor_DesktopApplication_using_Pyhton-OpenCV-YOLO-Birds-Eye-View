@@ -56,8 +56,6 @@ MIN_DISTANCE = 50       # Set the minimum distance initially between two persons
 '''
 def extract_detection_informations(frame, net, output_layer_names, confidence):
     height, width = frame.shape[:2]
-    
-
 
     # Create a blob using opencv-dnn to pass it through the YOLO model.
     blob = cv2.dnn.blobFromImage(frame, 1 / 255.0, (416, 416), swapRB=True, crop=False)
@@ -70,7 +68,7 @@ def extract_detection_informations(frame, net, output_layer_names, confidence):
     layer_outputs = net.forward(output_layer_names)
 
     boxes = []              # For holding the detected bounding boxes.
-    confidences = []        # For holding the cdetected confidences.
+    confidences = []        # For holding the detected confidences.
     centroids = []          # For holding the detected centroid of objects.
 
     # Iterate over each of the layer outputs.
@@ -177,7 +175,6 @@ def detected_minimum_distance_peoples(frame, boxes, confidences, centroids, conf
             # Change the color to red if the index pair exists within the violation set.
             if i in violate:
                 color = (0, 0, 255)
-                crop_image = frame[startY :  + endY, startX : endX]
 
             cv2.rectangle(frame, (startX, startY), (endX, endY), color, 2)
             cv2.circle(frame, (cX, cY), 5, color, 1)
