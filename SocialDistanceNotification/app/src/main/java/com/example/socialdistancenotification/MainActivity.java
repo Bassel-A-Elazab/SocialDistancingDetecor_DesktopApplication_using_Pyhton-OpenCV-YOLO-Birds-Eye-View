@@ -76,11 +76,17 @@ public class MainActivity extends AppCompatActivity {
                                 String time = jsonObj.getString("time");
                                 String count = jsonObj.getString("count");
 
+
+
                                 detectedPeoples = new DetectedPeoples(null, LocalDate.now(), time, Integer.parseInt(count), null);
+
                                 DetectedPeoplesList detectedPeoplesList = new DetectedPeoplesList();
+
                                 boolean success = detectedPeoplesListController.addDetectedPeoples(detectedPeoples, MainActivity.this);
                                 detectedPeoplesList.saveDetectedPeoples(MainActivity.this);
+                                detectedPeoplesList.loadDetectedPeoples(MainActivity.this);
                                 detectedPeoplesArrayList = detectedPeoplesListController.getDetectedPeoples();
+
                                 DetectedPeoplesAdapter adapter = new DetectedPeoplesAdapter(MainActivity.this, R.layout.detectedpeopleslist_detectedpeoples, detectedPeoplesArrayList);
 
                                 mListView.setAdapter(adapter);
