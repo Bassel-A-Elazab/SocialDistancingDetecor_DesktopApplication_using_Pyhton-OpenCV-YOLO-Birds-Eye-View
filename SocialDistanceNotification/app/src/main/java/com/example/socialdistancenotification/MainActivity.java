@@ -31,11 +31,25 @@ public class MainActivity extends AppCompatActivity {
 
     DetectedPeoplesList detectedPeoplesList = new DetectedPeoplesList();
     DetectedPeoplesListController detectedPeoplesListController = new DetectedPeoplesListController(detectedPeoplesList);
-    ArrayList<DetectedPeoples> detectedPeoplesArrayList = new ArrayList<DetectedPeoples>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        // Create the adapter that will return a fragment for each of the three
+        // primary sections of the activity.
+        SectionsPagerAdapter mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
+
+        // Set up the ViewPager with the sections adapter.
+        ViewPager mViewPager = (ViewPager) findViewById(R.id.container);
+        mViewPager.setAdapter(mSectionsPagerAdapter);
+        mViewPager.setOffscreenPageLimit(0);
+
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+        tabLayout.setupWithViewPager(mViewPager);
 
         Thread myThread = new Thread(new MyServerThread());
         myThread.start();
@@ -67,8 +81,6 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public void run() {
 
-                            ListView mListView = (ListView) findViewById(R.id.listView);
-                            DetectedPeoples detectedPeoples = null;
                             JSONObject jsonObj = null;
 
                             try {
@@ -76,26 +88,14 @@ public class MainActivity extends AppCompatActivity {
                                 String time = jsonObj.getString("time");
                                 String count = jsonObj.getString("count");
 
-
-
-                                detectedPeoples = new DetectedPeoples(null, LocalDate.now(), time, Integer.parseInt(count), null);
-
-                                DetectedPeoplesList detectedPeoplesList = new DetectedPeoplesList();
-
+                                DetectedPeoples detectedPeoples = new DetectedPeoples(null, LocalDate.now(), time, Integer.parseInt(count), null);
                                 boolean success = detectedPeoplesListController.addDetectedPeoples(detectedPeoples, MainActivity.this);
-                                detectedPeoplesList.saveDetectedPeoples(MainActivity.this);
-                                detectedPeoplesList.loadDetectedPeoples(MainActivity.this);
-                                detectedPeoplesArrayList = detectedPeoplesListController.getDetectedPeoples();
-
-                                DetectedPeoplesAdapter adapter = new DetectedPeoplesAdapter(MainActivity.this, R.layout.detectedpeopleslist_detectedpeoples, detectedPeoplesArrayList);
-
-                                mListView.setAdapter(adapter);
 
                             }catch (JSONException e) {
                                 e.printStackTrace();
                             }
 
-                            Toast.makeText(getApplicationContext(), detectedPeoples.getTime(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "Success", Toast.LENGTH_SHORT).show();
                         }
 
                     });
