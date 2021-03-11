@@ -1,16 +1,13 @@
 package com.example.socialdistancenotification;
 
 import androidx.annotation.RequiresApi;
-import androidx.annotation.StringDef;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager.widget.ViewPager;
 
-import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import com.google.android.material.tabs.TabLayout;
@@ -24,10 +21,8 @@ import java.io.InputStreamReader;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.time.LocalDate;
-import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-
 
     DetectedPeoplesList detectedPeoplesList = new DetectedPeoplesList();
     DetectedPeoplesListController detectedPeoplesListController = new DetectedPeoplesListController(detectedPeoplesList);
@@ -85,10 +80,12 @@ public class MainActivity extends AppCompatActivity {
 
                             try {
                                 jsonObj = new JSONObject(message);
+
+                                LocalDate date = LocalDate.now();
                                 String time = jsonObj.getString("time");
                                 String count = jsonObj.getString("count");
 
-                                DetectedPeoples detectedPeoples = new DetectedPeoples(null, LocalDate.now(), time, Integer.parseInt(count), null);
+                                DetectedPeoples detectedPeoples = new DetectedPeoples(null, date, time, Integer.parseInt(count), null);
                                 boolean success = detectedPeoplesListController.addDetectedPeoples(detectedPeoples, MainActivity.this);
 
                             }catch (JSONException e) {
