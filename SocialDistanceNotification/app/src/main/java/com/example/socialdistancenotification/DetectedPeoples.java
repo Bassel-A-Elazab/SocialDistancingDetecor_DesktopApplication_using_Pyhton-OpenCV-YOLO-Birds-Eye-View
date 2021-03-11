@@ -2,7 +2,10 @@ package com.example.socialdistancenotification;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Build;
 import android.util.Base64;
+
+import androidx.annotation.RequiresApi;
 
 import java.io.ByteArrayOutputStream;
 import java.time.LocalDate;
@@ -12,6 +15,7 @@ import java.util.UUID;
  * DetectedPeoples class
  */
 
+@RequiresApi(api = Build.VERSION_CODES.O)
 public class DetectedPeoples{
 
     private String Id;
@@ -25,7 +29,7 @@ public class DetectedPeoples{
 
     public DetectedPeoples(String Id, LocalDate date, String time, int countDetected, Bitmap image) {
 
-        this.date = date;
+        this.date = LocalDate.now();
         this.time = time;
         this.countDetected = countDetected;
         addImage(image);
@@ -53,7 +57,7 @@ public class DetectedPeoples{
         this.date = date;
     }
     public LocalDate getDate() {
-        return date;
+        return LocalDate.now();
     }
 
     public void setTime(String time){
