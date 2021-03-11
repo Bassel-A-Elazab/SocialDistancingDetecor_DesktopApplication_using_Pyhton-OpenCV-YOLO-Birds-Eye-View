@@ -1,13 +1,11 @@
 package com.example.socialdistancenotification;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -16,6 +14,7 @@ import java.util.ArrayList;
 /**
  * Superclass of DetectedPeoplesFragment
  */
+
 public abstract class DetectedPeoplesFragment extends Fragment {
 
     private DetectedPeoplesList detectedPeoplesList = new DetectedPeoplesList();
@@ -49,7 +48,7 @@ public abstract class DetectedPeoplesFragment extends Fragment {
         rootView = inflater.inflate(resource, container, false);
         list_view = (ListView) rootView.findViewById(id);
         selected_items = filterItems();
-        update();
+
     }
 
     public void loadItems(Fragment fragment){
@@ -65,7 +64,7 @@ public abstract class DetectedPeoplesFragment extends Fragment {
      */
     public void update(){
         if (update) {
-            adapter = new DetectedPeoplesAdapter(context, 0,selected_items);
+            adapter = new DetectedPeoplesAdapter(context, selected_items, fragment);
             list_view.setAdapter(adapter);
             adapter.notifyDataSetChanged();
         }
