@@ -2,7 +2,9 @@ package com.example.socialdistancenotification;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+
 import androidx.fragment.app.Fragment;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,14 +21,14 @@ import java.util.ArrayList;
 public class DetectedPeoplesAdapter extends ArrayAdapter<DetectedPeoples> {
 
     private LayoutInflater inflater;
+    private Fragment fragment;
     private Context context;
-    int mResource;
 
-    public DetectedPeoplesAdapter(Context context, int resource, ArrayList<DetectedPeoples> objects) {
-        super(context, resource, objects);
+    public DetectedPeoplesAdapter(Context context, ArrayList<DetectedPeoples> objects, Fragment fragment) {
+        super(context, 0, objects);
         this.context = context;
         this.inflater = LayoutInflater.from(context);
-        mResource = resource;
+        this.fragment = fragment;
     }
 
     @Override
@@ -48,14 +50,14 @@ public class DetectedPeoplesAdapter extends ArrayAdapter<DetectedPeoples> {
         }
 
         TextView date_tv = (TextView) convertView.findViewById(R.id.date_tv);
-        TextView time_tv = (TextView) convertView.findViewById(R.id.count_tv);
+        TextView time_tv = (TextView) convertView.findViewById(R.id.time_tv);
         TextView countDetected_tv = (TextView) convertView.findViewById(R.id.count_tv);
         ImageView photo = (ImageView) convertView.findViewById(R.id.image_view);
 
         if (thumbnail != null) {
             photo.setImageBitmap(thumbnail);
         } else {
-            photo.setImageResource(android.R.drawable.ic_menu_gallery);
+            photo.setImageResource(R.mipmap.ic_launcher_foreground);
         }
 
         date_tv.setText(date);
