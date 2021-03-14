@@ -87,6 +87,9 @@ public class MainActivity extends AppCompatActivity {
 
                                 DetectedPeoples detectedPeoples = new DetectedPeoples(null, date, time, Integer.parseInt(count), null);
                                 boolean success = detectedPeoplesListController.addDetectedPeoples(detectedPeoples, MainActivity.this);
+				if(!success){
+					Toast.makeText(getApplicationContext(), "Falied To send", Toast.LENGTH_SHORT).show();
+				}
 
                             }catch (JSONException e) {
                                 e.printStackTrace();
