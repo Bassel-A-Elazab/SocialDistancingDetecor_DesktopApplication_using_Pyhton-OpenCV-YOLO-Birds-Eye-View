@@ -1,5 +1,8 @@
 from PyQt5 import QtWidgets, uic
 import sys
+
+sys.path.insert(1, '/home/basola/Videos/SocialDistanceProjectOpencv/')
+
 from choose_module_camera import CameraModule     # For deciding whats type of camera modules Live streaming or databases
 
 class LoginForm(QtWidgets.QMainWindow):
