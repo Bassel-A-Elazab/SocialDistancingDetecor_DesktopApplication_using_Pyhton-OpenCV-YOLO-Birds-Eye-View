@@ -7,7 +7,7 @@ from camera_capture import CameraVideo
 class CameraModule(QtWidgets.QMainWindow):
     def __init__(self):
         super(CameraModule, self).__init__()
-        uic.loadUi('../ui/camera_module.ui', self)
+        uic.loadUi('ui/camera_module.ui', self)
         self.load_video = LoadVideo()
         self.open_camera = CameraVideo()
         self.button_open_camera = self.findChild(QtWidgets.QPushButton, 'camera') # Find the EditLine
