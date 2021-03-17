@@ -43,7 +43,12 @@ class LoadVideo(QtWidgets.QMainWindow):
             self.ApplicationVideo.setVideoFile(self.path)
     
     def start_video(self):
-        self.ApplicationVideo.startCapture()
+        if self.path:
+            self.ApplicationVideo.startCapture()
+        else:
+            msg = QtWidgets.QMessageBox()
+            msg.setText('Sorry! You should choose the video first...')
+            msg.exec_()
     
     def pause_video(self):
         self.ApplicationVideo.pauseCapture()
