@@ -1,12 +1,14 @@
 from PyQt5 import QtWidgets, uic
 import sys
 
+sys.path.insert(1, '~/Videos/SocialDistanceProjectOpencv/')
+
 from choose_module_camera import CameraModule     # For deciding whats type of camera modules Live streaming or databases
 
 class LoginForm(QtWidgets.QMainWindow):
     def __init__(self):
         super(LoginForm, self).__init__()
-        uic.loadUi('../ui/login.ui', self)
+        uic.loadUi('ui/login.ui', self)
         self.Application = CameraModule()
         self.lineEdit_username = self.findChild(QtWidgets.QLineEdit, 'userName') # Find the EditLine
         self.lineEdit_password = self.findChild(QtWidgets.QLineEdit, 'password') # Find the EditLine
@@ -18,6 +20,7 @@ class LoginForm(QtWidgets.QMainWindow):
 
         if self.lineEdit_username.text() == 'Sara' and self.lineEdit_password.text() == '1996':
             self.close()
+            self.deleteLater()
             self.Application.show()
 
         else:
