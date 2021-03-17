@@ -26,7 +26,8 @@ class LoadVideo(QtWidgets.QMainWindow):
         self.button_end = self.findChild(QtWidgets.QPushButton, 'end')              # Find the end button
         self.button_pause = self.findChild(QtWidgets.QPushButton, 'pause')          # Find the pause button
         self.button_quit = self.findChild(QtWidgets.QPushButton, 'quit')            # Find the start button
-        self.button_back = self.findChild(QtWidgets.QPushButton, 'back') # Find the back button
+        self.button_back = self.findChild(QtWidgets.QPushButton, 'back')            # Find the back button
+        self.button_logout = self.findChild(QtWidgets.QPushButton, 'logout')        # Find the logout button
 
         self.button_open_video.clicked.connect(self.upload_video)       # For open a video file
         self.button_start.clicked.connect(self.start_video)             # For start a video
@@ -34,6 +35,7 @@ class LoadVideo(QtWidgets.QMainWindow):
         self.button_pause.clicked.connect(self.pause_video)             # For pause a video
         self.button_quit.clicked.connect(self.quit_load_video)          # For quit a video
         self.button_back.clicked.connect(self.back_button)              # For back an action
+        self.button_logout.clicked.connect(self.logout_app)             # For logout an app
 
     def upload_video(self):
         self.path = QtWidgets.QFileDialog.getOpenFileName(self)[0]
@@ -59,6 +61,10 @@ class LoadVideo(QtWidgets.QMainWindow):
         self.deleteLater()
         self.Application.show()
     
+    def logout_app(self):
+        self.ApplicationVideo.endCapture()
+        self.close()
+
 def main():
     app = QtWidgets.QApplication(sys.argv)
     main = LoadVideo()
