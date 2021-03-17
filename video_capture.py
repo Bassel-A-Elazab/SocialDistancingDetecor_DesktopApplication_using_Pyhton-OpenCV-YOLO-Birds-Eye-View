@@ -5,13 +5,15 @@ from PyQt5 import QtCore, QtWidgets, QtGui, uic
 import cv2
 import numpy as np
 
+sys.path.insert(1, '~/Videos/SocialDistanceProjectOpencv')
 from CameraConfig import camera_view
 
 class LoadVideo(QtWidgets.QMainWindow):
     def __init__(self, parent=None):
         super(LoadVideo, self).__init__()
-        uic.loadUi('../ui/load_video.ui', self)
+        uic.loadUi('ui/load_video.ui', self)
 
+        self.path = ''
         self.YOLO_Weights = 'yolo_models/yolov3.weights'
         self.YOLO_Config = 'yolo_models/yolov3.cfg'
         self.confidence = 0.5
@@ -24,19 +26,19 @@ class LoadVideo(QtWidgets.QMainWindow):
         self.button_end = self.findChild(QtWidgets.QPushButton, 'end')              # Find the end button
         self.button_pause = self.findChild(QtWidgets.QPushButton, 'pause')          # Find the pause button
         self.button_quit = self.findChild(QtWidgets.QPushButton, 'quit')            # Find the start button
-        self.button_quit = self.findChild(QtWidgets.QPushButton, 'back') # Find the back button
+        self.button_back = self.findChild(QtWidgets.QPushButton, 'back') # Find the back button
 
         self.button_open_video.clicked.connect(self.upload_video)       # For open a video file
         self.button_start.clicked.connect(self.start_video)             # For start a video
         self.button_end.clicked.connect(self.end_video)                 # For end a video
         self.button_pause.clicked.connect(self.pause_video)             # For pause a video
         self.button_quit.clicked.connect(self.quit_load_video)          # For quit a video
-
+        self.button_back.clicked.connect(self.back_button)              # For back an action
 
     def upload_video(self):
-        path = QtWidgets.QFileDialog.getOpenFileName(self)[0]
-        if path:
-            self.ApplicationVideo.setVideoFile(path)
+        self.path = QtWidgets.QFileDialog.getOpenFileName(self)[0]
+        if self.path:
+            self.ApplicationVideo.setVideoFile(self.path)
     
     def start_video(self):
         self.ApplicationVideo.startCapture()
@@ -52,8 +54,10 @@ class LoadVideo(QtWidgets.QMainWindow):
         self.close()
 
     def back_button(self):
+        from choose_module_camera import CameraModule
+        self.Application = CameraModule()
         self.deleteLater()
-    
+        self.Application.show()
     
 def main():
     app = QtWidgets.QApplication(sys.argv)
