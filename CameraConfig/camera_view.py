@@ -1,17 +1,17 @@
 import cv2
 import sys
 
-from social_detection_model import soical_detect_peoples_using_yolo
+sys.path.insert(1, '~/Videos/SocialDistanceProjectOpencv/')
 
-sys.path.insert(1, '/home/basola/Music/SocialDistanceProjectOpencv/')
+from social_detection_model import soical_detect_peoples_using_yolo
 
 class DecideCameraVideo():
     def __init__(self):
         self.capturing = False
         self.c = None
 
-        self.YOLO_Weights = '../yolo_models/yolov3.weights'
-        self.YOLO_Config = '../yolo_models/yolov3.cfg'
+        self.YOLO_Weights = 'yolo_models/yolov3.weights'
+        self.YOLO_Config = 'yolo_models/yolov3.cfg'
         self.CONFIDENCE = 0.5
         self.THRESHOLD = 0.3
         self.MIN_DISTANCE = 50
