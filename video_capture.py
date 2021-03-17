@@ -57,8 +57,11 @@ class LoadVideo(QtWidgets.QMainWindow):
         self.ApplicationVideo.endCapture()
     
     def quit_load_video(self):
-        self.ApplicationVideo.quitCapture()
-        self.close()
+        from choose_module_camera import CameraModule
+        self.ApplicationVideo.endCapture()
+        self.Application = CameraModule()
+        self.deleteLater()
+        self.Application.show()
 
     def back_button(self):
         from choose_module_camera import CameraModule
