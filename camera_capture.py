@@ -15,9 +15,9 @@ class CameraVideo(QtWidgets.QMainWindow):
 
         self.YOLO_Weights = 'yolo_models/yolov3.weights'
         self.YOLO_Config = 'yolo_models/yolov3.cfg'
-        self.confidence = 0.3
-        self.threshold = 0.1
-        self.MIN_DISTANCE = 100
+        self.confidence = 0.5
+        self.threshold = 0.3
+        self.MIN_DISTANCE = 50
 
         self.ApplicationVideo = camera_view.DecideCameraVideo()
 
