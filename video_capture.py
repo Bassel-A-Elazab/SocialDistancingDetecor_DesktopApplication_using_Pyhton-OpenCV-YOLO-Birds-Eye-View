@@ -5,7 +5,7 @@ from PyQt5 import QtCore, QtWidgets, QtGui, uic
 import cv2
 import numpy as np
 
-sys.path.insert(1, '~/Videos/SocialDistanceProjectOpencv')
+sys.path.insert(1, 'SocialDistanceProjectOpencv/')
 from CameraConfig import camera_view
 
 class LoadVideo(QtWidgets.QMainWindow):

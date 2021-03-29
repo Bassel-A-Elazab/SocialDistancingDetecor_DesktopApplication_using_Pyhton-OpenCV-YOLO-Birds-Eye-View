@@ -1,7 +1,7 @@
 import cv2
 import sys
 
-sys.path.insert(1, '~/Videos/SocialDistanceProjectOpencv/')
+sys.path.insert(1, 'SocialDistanceProjectOpencv/')
 
 from social_detection_model import soical_detect_peoples_using_yolo
 

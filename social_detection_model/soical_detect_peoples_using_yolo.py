@@ -6,7 +6,7 @@ import numpy as np
 
 from scipy.spatial import distance as dist
 
-sys.path.insert(1, '/home/basola/Music/SocialDistanceProjectOpencv/')
+sys.path.insert(1, 'SocialDistanceProjectOpencv/')
 
 class SoicalDistanceDetectedModel():
 
