@@ -3,10 +3,12 @@ from os import path
 
 import cv2
 import numpy as np
+from datetime import datetime
 
 from scipy.spatial import distance as dist
 
 sys.path.insert(1, 'SocialDistanceProjectOpencv/')
+from SendInfoToApp import client
 
 class SoicalDistanceDetectedModel():
 
@@ -19,6 +21,7 @@ class SoicalDistanceDetectedModel():
         self.threshold = arg_threshold
         self.MIN_DISTANCE = min_distance
         self.personIdx = 0
+        self.sendInfo = client.ClientInfo(0, 0)
 
     def extract_detection_informations(self, frame):
         height, width = frame.shape[:2]
@@ -125,6 +128,10 @@ class SoicalDistanceDetectedModel():
             (startX, startY, endX, endY) = bbox      # extract the bounding box.
             (cX, cY) = centroid                     # extract the centroid coordinates.
             color = (0, 255, 0)
+            # For sending the information to andorid app.
+            now = datetime.now()
+            current_time = now.strftime("%H:%M:%S")
+            self.sendInfo.send_information(current_time, len(violates))
 
             # Change the color to red if the index pair exists within the violation set.
             if i in violates:
