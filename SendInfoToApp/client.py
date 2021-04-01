@@ -2,7 +2,7 @@
 import socket
 import json
 
-HOST = '10.2.0.16'      # The server's hostname or IP address
+HOST = '192.168.1.4'      # The server's hostname or IP address
 PORT = 7802             # The port used by the server
 
 class ClientInfo:
