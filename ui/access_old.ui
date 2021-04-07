@@ -42,10 +42,10 @@
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>270</x>
-      <y>50</y>
-      <width>261</width>
-      <height>61</height>
+      <x>130</x>
+      <y>0</y>
+      <width>541</width>
+      <height>81</height>
      </rect>
     </property>
     <property name="font">
@@ -60,7 +60,7 @@
      <string notr="true">color: rgb(193, 125, 17);</string>
     </property>
     <property name="text">
-     <string>Login</string>
+     <string>Change UserName And Password</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
@@ -69,8 +69,8 @@
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>150</x>
-      <y>150</y>
+      <x>50</x>
+      <y>170</y>
       <width>181</width>
       <height>41</height>
      </rect>
@@ -87,13 +87,13 @@
      <string notr="true">color: rgb(143, 89, 2);</string>
     </property>
     <property name="text">
-     <string>User Name: </string>
+     <string>Old Name: </string>
     </property>
    </widget>
    <widget class="QLabel" name="label_4">
     <property name="geometry">
      <rect>
-      <x>150</x>
+      <x>50</x>
       <y>300</y>
       <width>181</width>
       <height>41</height>
@@ -111,17 +111,17 @@
      <string notr="true">color: rgb(143, 89, 2);</string>
     </property>
     <property name="text">
-     <string>Password: </string>
+     <string>Old Password: </string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="userName">
+   <widget class="QLineEdit" name="old_name">
     <property name="enabled">
      <bool>true</bool>
     </property>
     <property name="geometry">
      <rect>
-      <x>180</x>
-      <y>210</y>
+      <x>230</x>
+      <y>170</y>
       <width>251</width>
       <height>41</height>
      </rect>
@@ -148,11 +148,11 @@ border-color: rgb(143, 89, 2);</string>
      <string comment="Please Enter your user name here ..."/>
     </property>
    </widget>
-   <widget class="QLineEdit" name="password">
+   <widget class="QLineEdit" name="old_pass">
     <property name="geometry">
      <rect>
-      <x>180</x>
-      <y>360</y>
+      <x>230</x>
+      <y>300</y>
       <width>251</width>
       <height>41</height>
      </rect>
@@ -175,12 +175,12 @@ border-color: rgb(143, 89, 2);</string>
      <string extracomment="Please, Enter your password here..."/>
     </property>
    </widget>
-   <widget class="QPushButton" name="login">
+   <widget class="QPushButton" name="sure_old">
     <property name="geometry">
      <rect>
-      <x>170</x>
-      <y>440</y>
-      <width>161</width>
+      <x>310</x>
+      <y>430</y>
+      <width>191</width>
       <height>51</height>
      </rect>
     </property>
@@ -198,33 +198,7 @@ color: rgb(255, 255, 255);
 border-radius: 20px;</string>
     </property>
     <property name="text">
-     <string>Confirm</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="change">
-    <property name="geometry">
-     <rect>
-      <x>360</x>
-      <y>440</y>
-      <width>371</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>URW Gothic L</family>
-      <pointsize>15</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color:rgb(178, 171, 171);
-color: rgb(255, 255, 255);
-border-radius: 20px;</string>
-    </property>
-    <property name="text">
-     <string>Change UserName And Password</string>
+     <string>Change</string>
     </property>
    </widget>
   </widget>
