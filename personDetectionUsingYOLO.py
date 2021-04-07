@@ -5,7 +5,6 @@ import os
 import time
 from scipy.spatial import distance as dist
 
-
 '''
 Passes the arguments in terminal to run the models where is consists of :
     1- wieghts --> YOLO model weights
@@ -17,8 +16,8 @@ Passes the arguments in terminal to run the models where is consists of :
     7- save --> If you want to save the output results
     8- show --> If you want to show the frames
     9- image_path --> Passing an image to test
-
 '''
+
 parser = argparse.ArgumentParser()
 parser.add_argument('-w', '--weights', type=str, default='model/yolov3.weights', help='Path to model weights')
 parser.add_argument('-cfg', '--config', type=str, default='model/yolov3.cfg', help='Path to configuration file')
@@ -81,7 +80,6 @@ def extract_detection_informations(frame, net, output_layer_names, confidence):
             scores = detection[5:]              # Extract the scores of the prediction.
             classID = np.argmax(scores)         # Extract the class ID the prediction.
             conf = scores[classID]              # Extract the scores the confidence of the prediction. 
-            
             '''
             First: check for the minimum confidences (i.e., probability) to filter out weak predictions.
             Second: Choose only person in the process of the predictions.
