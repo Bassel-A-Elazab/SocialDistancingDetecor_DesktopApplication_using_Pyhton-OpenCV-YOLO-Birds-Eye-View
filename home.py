@@ -8,7 +8,8 @@ class Home(QtWidgets.QMainWindow):
     def __init__(self):
         super(Home, self).__init__()
         uic.loadUi('ui/home.ui', self)
-
+        self.setWindowTitle("Home")
+        
         self.Login = LoginForm()
         
         self.button_enter = self.findChild(QtWidgets.QPushButton, 'enter') # Find the Enter button

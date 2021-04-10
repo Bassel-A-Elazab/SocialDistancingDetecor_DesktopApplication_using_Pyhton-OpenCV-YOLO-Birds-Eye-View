@@ -12,7 +12,8 @@ class CameraVideo(QtWidgets.QMainWindow):
     def __init__(self):
         super(CameraVideo, self).__init__()
         uic.loadUi('ui/open_camera.ui', self)
-
+        self.setWindowTitle("Live Streaming")
+        
         self.YOLO_Weights = 'yolo_models/yolov3.weights'
         self.YOLO_Config = 'yolo_models/yolov3.cfg'
         self.confidence = 0.5

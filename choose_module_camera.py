@@ -8,6 +8,7 @@ class CameraModule(QtWidgets.QMainWindow):
     def __init__(self):
         super(CameraModule, self).__init__()
         uic.loadUi('ui/camera_module.ui', self)
+        self.setWindowTitle("Frame Module")
 
         self.load_video = LoadVideo()
         self.open_camera = CameraVideo()

@@ -12,7 +12,8 @@ class LoadVideo(QtWidgets.QMainWindow):
     def __init__(self, parent=None):
         super(LoadVideo, self).__init__()
         uic.loadUi('ui/load_video.ui', self)
-
+        self.setWindowTitle("Video Streaming")
+        
         self.path = ''
         self.YOLO_Weights = 'yolo_models/yolov3.weights'
         self.YOLO_Config = 'yolo_models/yolov3.cfg'

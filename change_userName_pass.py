@@ -6,6 +6,7 @@ class ChangeData(QtWidgets.QMainWindow):
 
         super(ChangeData, self).__init__()
         uic.loadUi('ui/access_new.ui', self)
+        self.setWindowTitle("Submit For Changing User Name Or Password")
         
         self.lineEdit_username = self.findChild(QtWidgets.QLineEdit, 'new_name') # Find the EditLine
         self.lineEdit_password = self.findChild(QtWidgets.QLineEdit, 'new_pass') # Find the EditLine

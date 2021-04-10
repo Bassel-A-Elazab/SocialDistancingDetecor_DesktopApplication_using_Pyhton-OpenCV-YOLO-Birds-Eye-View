@@ -8,6 +8,7 @@ class CheckData(QtWidgets.QMainWindow):
 
         super(CheckData, self).__init__()
         uic.loadUi('ui/access_old.ui', self)
+        self.setWindowTitle("Check For Old User Name or Password")
 
         self.changeData = ChangeData()
 

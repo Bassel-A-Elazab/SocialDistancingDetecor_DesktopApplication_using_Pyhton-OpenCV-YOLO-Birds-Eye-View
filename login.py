@@ -8,7 +8,8 @@ class LoginForm(QtWidgets.QMainWindow):
     def __init__(self):
         super(LoginForm, self).__init__()
         uic.loadUi('ui/login.ui', self)
-
+        self.setWindowTitle("Login")
+        
         self.Application = CameraModule()
         self.ChangeAccess = CheckData()
 
