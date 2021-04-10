@@ -20,7 +20,7 @@ class ChangeData(QtWidgets.QMainWindow):
         msg = QtWidgets.QMessageBox()
     
         if self.lineEdit_username.text() != "" and self.lineEdit_password.text() != "":
-            file_data = open("login.txt", "w")
+            file_data = open("admin_data/login.txt", "w")
             file_data.write(self.lineEdit_username.text()+"\n")
             file_data.write(self.lineEdit_password.text())
             file_data.close()

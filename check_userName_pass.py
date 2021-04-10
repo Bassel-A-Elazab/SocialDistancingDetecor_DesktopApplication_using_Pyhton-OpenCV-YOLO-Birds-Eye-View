@@ -23,7 +23,7 @@ class CheckData(QtWidgets.QMainWindow):
 
     def check_username_password(self):
         msg = QtWidgets.QMessageBox()
-        file_data = open("login.txt", "r")
+        file_data = open("admin_data/login.txt", "r")
         content = file_data.read().split('\n')
 
         if self.lineEdit_username.text() == content[0] and self.lineEdit_password.text() == content[1]:
