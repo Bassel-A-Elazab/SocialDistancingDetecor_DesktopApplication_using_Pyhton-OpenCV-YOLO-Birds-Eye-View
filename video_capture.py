@@ -21,6 +21,7 @@ class LoadVideo(QtWidgets.QMainWindow):
         self.MIN_DISTANCE = 50
 
         self.ApplicationVideo = camera_view.DecideCameraVideo()
+
         self.button_open_video = self.findChild(QtWidgets.QPushButton, 'file_open') # Find the open file button
         self.button_start = self.findChild(QtWidgets.QPushButton, 'start')          # Find the start button
         self.button_end = self.findChild(QtWidgets.QPushButton, 'end')              # Find the end button
@@ -71,16 +72,11 @@ class LoadVideo(QtWidgets.QMainWindow):
     
     def logout_app(self):
         self.ApplicationVideo.endCapture()
+        from home import Home
+        self.backHome = Home()
         self.close()
+        self.backHome.show()
 
-def main():
-    app = QtWidgets.QApplication(sys.argv)
-    main = LoadVideo()
-    main.show()
-    sys.exit(app.exec_())
- 
-if __name__ == '__main__':
-    main()
 
 
 

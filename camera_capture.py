@@ -61,15 +61,9 @@ class CameraVideo(QtWidgets.QMainWindow):
     
     def logout_app(self):
         self.ApplicationVideo.endCapture()
+        from home import Home
+        self.backHome = Home()
         self.close()
-    
+        self.backHome.show()
 
-def main():
-    app = QtWidgets.QApplication(sys.argv)
-    main = CameraVideo()
-    main.show()
-    sys.exit(app.exec_())
- 
-if __name__ == '__main__':
-    main()
 
