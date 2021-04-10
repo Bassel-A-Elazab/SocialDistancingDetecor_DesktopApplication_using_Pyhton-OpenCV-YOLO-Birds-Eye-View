@@ -8,8 +8,10 @@ class CameraModule(QtWidgets.QMainWindow):
     def __init__(self):
         super(CameraModule, self).__init__()
         uic.loadUi('ui/camera_module.ui', self)
+
         self.load_video = LoadVideo()
         self.open_camera = CameraVideo()
+
         self.button_open_camera = self.findChild(QtWidgets.QPushButton, 'camera') # Find the EditLine
         self.button_load_video = self.findChild(QtWidgets.QPushButton, 'stored') # Find the EditLine
         self.button_logout = self.findChild(QtWidgets.QPushButton, 'logout') # Find the logout button
@@ -27,7 +29,10 @@ class CameraModule(QtWidgets.QMainWindow):
         self.load_video.show()
 
     def logout_app(self):
+        from home import Home
+        self.backHome = Home()
         self.close()
+        self.backHome.show()
 
     
 
