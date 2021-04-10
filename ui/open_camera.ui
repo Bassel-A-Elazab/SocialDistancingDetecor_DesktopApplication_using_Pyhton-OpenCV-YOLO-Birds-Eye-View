@@ -14,42 +14,43 @@
    <string>MainWindow</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(255, 255, 255);</string>
+   <string notr="true">background-color: rgb(247, 247, 247);</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="start">
+   <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>140</x>
-      <y>230</y>
-      <width>161</width>
-      <height>51</height>
+      <x>240</x>
+      <y>260</y>
+      <width>321</width>
+      <height>61</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <family>URW Gothic L</family>
-      <pointsize>15</pointsize>
+      <family>Ubuntu Condensed</family>
+      <pointsize>22</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color:rgb(178, 171, 171);
-color: rgb(255, 255, 255);
-border-radius: 20px;</string>
+     <string notr="true">color: rgb(85, 87, 83);</string>
     </property>
     <property name="text">
-     <string>Start</string>
+     <string>Live Streaming</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
     </property>
    </widget>
    <widget class="QPushButton" name="quit">
     <property name="geometry">
      <rect>
-      <x>470</x>
-      <y>350</y>
-      <width>161</width>
-      <height>51</height>
+      <x>410</x>
+      <y>440</y>
+      <width>91</width>
+      <height>61</height>
      </rect>
     </property>
     <property name="font">
@@ -69,68 +70,36 @@ border-radius: 20px;</string>
      <string>Quit</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_2">
+   <widget class="QPushButton" name="logout">
     <property name="geometry">
      <rect>
-      <x>100</x>
-      <y>40</y>
-      <width>581</width>
-      <height>61</height>
+      <x>710</x>
+      <y>10</y>
+      <width>81</width>
+      <height>71</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <family>Tlwg Typo</family>
-      <pointsize>22</pointsize>
+      <pointsize>30</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(255, 255, 255);
-color: rgb(141, 131, 131);
-</string>
+     <string notr="true">background-color: rgb(247, 247, 247,0);</string>
     </property>
     <property name="text">
-     <string>Live Streaming ...</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pause">
-    <property name="geometry">
-     <rect>
-      <x>470</x>
-      <y>230</y>
-      <width>161</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>URW Gothic L</family>
-      <pointsize>15</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color:rgb(178, 171, 171);
-color: rgb(255, 255, 255);
-border-radius: 20px;</string>
-    </property>
-    <property name="text">
-     <string>Pause</string>
+     <string>[-&gt;</string>
     </property>
    </widget>
    <widget class="QPushButton" name="end">
     <property name="geometry">
      <rect>
-      <x>140</x>
-      <y>350</y>
-      <width>161</width>
-      <height>51</height>
+      <x>290</x>
+      <y>440</y>
+      <width>91</width>
+      <height>61</height>
      </rect>
     </property>
     <property name="font">
@@ -150,56 +119,98 @@ border-radius: 20px;</string>
      <string>End</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="pause">
+    <property name="geometry">
+     <rect>
+      <x>410</x>
+      <y>360</y>
+      <width>91</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>URW Gothic L</family>
+      <pointsize>15</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color:rgb(178, 171, 171);
+color: rgb(255, 255, 255);
+border-radius: 20px;</string>
+    </property>
+    <property name="text">
+     <string>Pause</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="start">
+    <property name="geometry">
+     <rect>
+      <x>290</x>
+      <y>360</y>
+      <width>91</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>URW Gothic L</family>
+      <pointsize>15</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color:rgb(178, 171, 171);
+color: rgb(255, 255, 255);
+border-radius: 20px;</string>
+    </property>
+    <property name="text">
+     <string>Start</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>270</x>
+      <y>60</y>
+      <width>271</width>
+      <height>171</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>logo/logo.jpg</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
    <widget class="QPushButton" name="back">
     <property name="geometry">
      <rect>
-      <x>0</x>
-      <y>0</y>
-      <width>71</width>
-      <height>51</height>
+      <x>10</x>
+      <y>10</y>
+      <width>81</width>
+      <height>71</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <family>URW Gothic L</family>
-      <pointsize>15</pointsize>
+      <pointsize>30</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color:rgb(178, 171, 171);
-color: rgb(255, 255, 255);
-border-radius: 20px;</string>
+     <string notr="true">background-color: rgb(247, 247, 247,0);</string>
     </property>
     <property name="text">
-     <string>Back</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="logout">
-    <property name="geometry">
-     <rect>
-      <x>730</x>
-      <y>0</y>
-      <width>71</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>URW Gothic L</family>
-      <pointsize>15</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color:rgb(178, 171, 171);
-color: rgb(255, 255, 255);
-border-radius: 20px;</string>
-    </property>
-    <property name="text">
-     <string>Logout</string>
+     <string>&lt;</string>
     </property>
    </widget>
   </widget>

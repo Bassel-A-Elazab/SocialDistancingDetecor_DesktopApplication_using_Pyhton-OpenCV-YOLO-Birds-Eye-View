@@ -17,12 +17,60 @@
    <string notr="true">background-color: rgb(247, 247, 247);</string>
   </property>
   <widget class="QWidget" name="centralwidget">
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>280</x>
+      <y>70</y>
+      <width>241</width>
+      <height>191</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(247, 247, 247);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>logo/logo.jpg</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="enter">
+    <property name="geometry">
+     <rect>
+      <x>280</x>
+      <y>400</y>
+      <width>241</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>URW Gothic L</family>
+      <pointsize>15</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color:rgb(178, 171, 171);
+color: rgb(255, 255, 255);
+border-radius: 20px;</string>
+    </property>
+    <property name="text">
+     <string>Enter</string>
+    </property>
+   </widget>
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>260</x>
-      <y>260</y>
-      <width>281</width>
+      <x>240</x>
+      <y>300</y>
+      <width>321</width>
       <height>61</height>
      </rect>
     </property>
@@ -35,23 +83,22 @@
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: rgb(85, 87, 83);
-</string>
+     <string notr="true">color: rgb(85, 87, 83);</string>
     </property>
     <property name="text">
-     <string>Type of the system</string>
+     <string>Welcome</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
-   <widget class="QPushButton" name="camera">
+   <widget class="QPushButton" name="exit">
     <property name="geometry">
      <rect>
-      <x>320</x>
-      <y>370</y>
-      <width>161</width>
-      <height>61</height>
+      <x>280</x>
+      <y>480</y>
+      <width>241</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="font">
@@ -68,83 +115,12 @@ color: rgb(255, 255, 255);
 border-radius: 20px;</string>
     </property>
     <property name="text">
-     <string>Live Streaming</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="stored">
-    <property name="geometry">
-     <rect>
-      <x>320</x>
-      <y>470</y>
-      <width>161</width>
-      <height>61</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>URW Gothic L</family>
-      <pointsize>15</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color:rgb(178, 171, 171);
-color: rgb(255, 255, 255);
-border-radius: 20px;</string>
-    </property>
-    <property name="text">
-     <string>Load Video</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label">
-    <property name="geometry">
-     <rect>
-      <x>270</x>
-      <y>50</y>
-      <width>271</width>
-      <height>171</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="pixmap">
-     <pixmap>logo/logo.jpg</pixmap>
-    </property>
-    <property name="scaledContents">
-     <bool>true</bool>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="logout">
-    <property name="geometry">
-     <rect>
-      <x>710</x>
-      <y>10</y>
-      <width>81</width>
-      <height>71</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>30</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(247, 247, 247,0);</string>
-    </property>
-    <property name="text">
-     <string>[-&gt;</string>
+     <string>Exit</string>
     </property>
    </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
- <resources>
-  <include location="logo/logout.qrc"/>
-  <include location="logo/logout1.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>
