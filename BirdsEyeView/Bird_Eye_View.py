@@ -53,3 +53,48 @@ def draw_circle_bird_eye_view(frame, pedestrian_boxes, M, scale_w, scale_h):
 
         frame = cv2.rectangle(frame, (startX, startY), (endX, endY), color_green, 2)
     return warped_pts, frame_pts, bird_image
+
+
+def draw_lines_between_nodes(warped_points, frame_points, bird_image, frame_image, d_thresh):
+    
+    color_red = (255, 0, 0)
+
+    p = np.array(warped_points)
+    p_frame = np.array(frame_points)
+
+    dist_condensed = pdist(p)
+    dist = squareform(dist_condensed)
+
+    # Really close: 6 feet mark
+    dd = np.where(dist < d_thresh)
+    six_feet_violations = len(np.where(dist_condensed < d_thresh)[0])
+
+    color_6 = (52, 92, 227)
+    for i in range(int(np.ceil(len(dd[0]) / 2))):
+        if dd[0][i] != dd[1][i]:
+            point1 = dd[0][i]
+            point2 = dd[1][i]
+
+
+            startX1 = p_frame[point1][0]
+            startY1 = p_frame[point1][1]
+            endX1 = p_frame[point1][2]
+            endY1 = p_frame[point1][3]
+
+            startX2 = p_frame[point2][0]
+            startY2 = p_frame[point2][1]
+            endX2 = p_frame[point2][2]
+            endY2 = p_frame[point2][3]
+
+            cv2.line(
+                bird_image,
+                (p[point1][0], p[point1][1]),
+                (p[point2][0], p[point2][1]),
+                color_6,
+                1,
+            )
+            frame_image = cv2.rectangle(frame_image, (startX1, startY1), (endX1, endY1), color_red, 2)
+            frame_image = cv2.rectangle(frame_image, (startX2, startY2), (endX2, endY2), color_red, 2)
+    
+    return frame_image
+
