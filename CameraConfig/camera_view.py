@@ -4,6 +4,7 @@ import sys
 sys.path.insert(1, 'SocialDistanceProjectOpencv/')
 
 from social_detection_model import soical_detect_peoples_using_yolo
+from BirdsEyeView import Bird_Eye_View
 
 class DecideCameraVideo():
     def __init__(self):
