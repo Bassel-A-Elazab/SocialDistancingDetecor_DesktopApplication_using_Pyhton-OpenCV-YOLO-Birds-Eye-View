@@ -63,16 +63,17 @@ class DecideCameraVideo():
         self.capturing = True
         cap = self.c
 
-        cv2.namedWindow("Image")
-        cv2.setMouseCallback("Image", self.get_mouse_points)
-        self.first_frame_display = True
-
         while(self.capturing):
 
             self.frame_num += 1
 
             ret, frame = cap.read()
             if self.frame_num == 1:
+                
+                cv2.namedWindow("Image")
+                cv2.setMouseCallback("Image", self.get_mouse_points)
+                self.first_frame_display = True
+
                 while True:
                     self.image = frame
                     cv2.imshow("Image", self.image)
