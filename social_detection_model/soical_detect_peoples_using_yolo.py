@@ -70,9 +70,30 @@ class SoicalDistanceDetectedModel():
                     boxes.append([x, y, int(w), int(h)])
                     confidences.append(float(conf))
                     centroids.append((centerX, centerY))
-                
-        return boxes, confidences, centroids     
+        result_detections = []
+        idxs = cv2.dnn.NMSBoxes(boxes, confidences, self.confidence, self.threshold)
 
+                # Check if there is at least one detection exists.
+        if len(idxs) > 0:
+            for i in idxs.flatten():
+                # Extract bounding box coordinates
+                x, y = boxes[i][0], boxes[i][1]
+                w, h = boxes[i][2], boxes[i][3]
+                
+                '''
+                Assign person detected informations which is:
+                    The person probability.
+                    The bounding box coordinates,
+                    The centrosid.
+                '''
+                r = (confidences[i], (x, y, x + w, y + h), centroids[i])    
+                result_detections.append(r)
+        
+        return result_detections 
+
+
+    '''
+    Note: This is for detect the distance between peoples using their center points. [Without Applying Birds-Eye View]
 
     def detected_minimum_distance_peoples(self, frame):
         boxes, confidences, centroids = self.extract_detection_informations(frame)
@@ -89,12 +110,7 @@ class SoicalDistanceDetectedModel():
                 x, y = boxes[i][0], boxes[i][1]
                 w, h = boxes[i][2], boxes[i][3]
                 
-                '''
-                Assign person detected informations which is:
-                    The person probability.
-                    The bounding box coordinates,
-                    The centrosid.
-                '''
+
                 r = (confidences[i], (x, y, x + w, y + h), centroids[i])    
                 results.append(r)
 
@@ -108,10 +124,8 @@ class SoicalDistanceDetectedModel():
             # loop over the upper triangular of the distance matrix.
             for i in range(0, D.shape[0]):
                 for j in range(i+1, D.shape[1]):
-                    '''
-                    check to see if the distance between any two centroid pairs,
-                    is less than the configured number of pixels
-                    '''
+
+
                     if D[i, j] < self.MIN_DISTANCE:
                         # update out violation set with the indexes of the centroid pairs.
                         violate.add(i)
@@ -140,4 +154,5 @@ class SoicalDistanceDetectedModel():
             cv2.rectangle(image_data, (startX, startY), (endX, endY), color, 2)
             cv2.circle(image_data, (cX, cY), 5, color, 1)
             cv2.imshow("res", image_data)
-    
+
+'''
