@@ -1,5 +1,6 @@
 import cv2
 import sys
+import numpy as np
 
 sys.path.insert(1, 'SocialDistanceProjectOpencv/')
 
@@ -19,15 +20,15 @@ class DecideCameraVideo():
         self.THRESHOLD = 0.3
         self.MIN_DISTANCE = 50
         
-        self.scale_w = 1.2 / 2
-        self.scale_h = 4 / 2
+        self.scale_w = 1.2 / 4
+        self.scale_h = 4 / 4
 
         self.mouse_pts = []         
 
         self.frame_num = 0
         self.first_frame_display = True
 
-        self.color_yellow = (0, 255, 0)
+        self.color_yellow = (0, 255, 255)
 
         self.net = cv2.dnn.readNetFromDarknet(self.YOLO_Config, self.YOLO_Weights)
         self.output_layer_names = self.net.getLayerNames()
@@ -37,7 +38,7 @@ class DecideCameraVideo():
         self.bird_view = Bird_Eye_View.Top_Down_View()      # For applying a Top-Down View.
 
     def get_mouse_points(self, event, x, y, flags, param):
-        
+
         # Used to mark 4 points on the frame zero of the video that will be warped
         # Used to mark 2 points on the frame zero of the video that are 6 feet away
         
@@ -61,15 +62,43 @@ class DecideCameraVideo():
     def startCapture(self):
         self.capturing = True
         cap = self.c
+
+        cv2.namedWindow("Image")
+        cv2.setMouseCallback("Image", self.get_mouse_points)
+        self.first_frame_display = True
+
         while(self.capturing):
+
+            self.frame_num += 1
+
             ret, frame = cap.read()
+            if self.frame_num == 1:
+                while True:
+                    self.image = frame
+                    cv2.imshow("Image", self.image)
+                    cv2.waitKey(1)
+                    if len(self.mouse_pts) == 7:
+                        cv2.destroyWindow("Image")
+                        break
+                    self.first_frame_display = False
+            
             if frame is None:
                 self.capturing = False
                 cv2.destroyAllWindows()
                 return 
+
+            detect_result = self.ApplicationDetect.extract_detection_informations(frame)
+            M, M_INV, d_thresh = self.bird_view.get_camera_perspective(frame, self.mouse_pts)
+            pts = np.array([self.mouse_pts[0], self.mouse_pts[1], self.mouse_pts[3], self.mouse_pts[2]], np.int32)
+            cv2.polylines(frame, [pts], True, self.color_yellow, thickness=4)
+     
+            warped_pts, frame_pts, bird_image = self.bird_view.draw_circle_bird_eye_view(frame, detect_result, M, self.scale_w, self.scale_h)
+            frame = self.bird_view.draw_lines_between_nodes(warped_pts, frame_pts, bird_image, frame, d_thresh)
+            
             cv2.imshow("Frame", frame)
-            self.ApplicationDetect.Image_Data_Mark(frame)
-            cv2.waitKey(5)
+            cv2.imshow("Bird Eye Views", bird_image)
+            cv2.waitKey(1)
+
         cv2.destroyAllWindows()
         
     def pauseCapture(self):
