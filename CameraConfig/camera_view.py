@@ -66,20 +66,21 @@ class DecideCameraVideo():
         while(self.capturing):
 
             self.frame_num += 1
-
+            print(self.frame_num)
             ret, frame = cap.read()
             if self.frame_num == 1:
                 
-                cv2.namedWindow("Image")
-                cv2.setMouseCallback("Image", self.get_mouse_points)
+                cv2.namedWindow("FirstFrame")
+                cv2.setMouseCallback("FirstFrame", self.get_mouse_points)
                 self.first_frame_display = True
-
+                
                 while True:
                     self.image = frame
-                    cv2.imshow("Image", self.image)
+                    cv2.imshow("FirstFrame", self.image)
                     cv2.waitKey(1)
-                    if len(self.mouse_pts) == 7:
-                        cv2.destroyWindow("Image")
+
+                    if len(self.mouse_pts) == 7 :
+                        cv2.destroyWindow("FirstFrame")
                         break
                     self.first_frame_display = False
             
@@ -109,6 +110,9 @@ class DecideCameraVideo():
     def endCapture(self):
         self.capturing = False
         self.c = None
+        self.frame_num = 0
+        self.mouse_pts = []
+        self.finish = True
         cv2.destroyAllWindows()
     
     def quitCapture(self):
