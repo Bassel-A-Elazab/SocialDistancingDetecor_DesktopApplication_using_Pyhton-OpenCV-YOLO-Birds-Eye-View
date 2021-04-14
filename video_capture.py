@@ -56,6 +56,7 @@ class LoadVideo(QtWidgets.QMainWindow):
         self.ApplicationVideo.pauseCapture()
     
     def end_video(self):
+        self.path = ''
         self.ApplicationVideo.endCapture()
     
     def quit_load_video(self):
