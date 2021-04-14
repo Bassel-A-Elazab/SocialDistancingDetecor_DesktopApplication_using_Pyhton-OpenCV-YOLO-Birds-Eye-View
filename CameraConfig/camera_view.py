@@ -66,7 +66,6 @@ class DecideCameraVideo():
         while(self.capturing):
 
             self.frame_num += 1
-            print(self.frame_num)
             ret, frame = cap.read()
             if self.frame_num == 1:
                 
